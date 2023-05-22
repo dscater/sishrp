@@ -138,7 +138,7 @@
                             class="nav-link"
                             v-loading.fullscreen.lock="fullscreenLoading"
                         >
-                            <i class="nav-icon fas fa-list"></i>
+                            <i class="nav-icon fas fa-sitemap"></i>
                             <p>GAMY</p>
                         </router-link>
                     </li>
@@ -152,7 +152,7 @@
                             class="nav-link"
                             v-loading.fullscreen.lock="fullscreenLoading"
                         >
-                            <i class="nav-icon fas fa-list"></i>
+                            <i class="nav-icon fas fa-newspaper"></i>
                             <p>Noticias</p>
                         </router-link>
                     </li>
@@ -180,8 +180,22 @@
                             class="nav-link"
                             v-loading.fullscreen.lock="fullscreenLoading"
                         >
-                            <i class="nav-icon fas fa-list"></i>
+                            <i class="nav-icon fas fa-list-alt"></i>
                             <p>Actividades</p>
+                        </router-link>
+                    </li>
+                    <li
+                        class="nav-item"
+                        v-if="permisos.includes('portal_convocatorias.index')"
+                    >
+                        <router-link
+                            exact
+                            :to="{ name: 'portal_convocatorias.index' }"
+                            class="nav-link"
+                            v-loading.fullscreen.lock="fullscreenLoading"
+                        >
+                            <i class="nav-icon fas fa-list"></i>
+                            <p>Turismo y deportes</p>
                         </router-link>
                     </li>
                     <li
@@ -194,7 +208,7 @@
                             class="nav-link"
                             v-loading.fullscreen.lock="fullscreenLoading"
                         >
-                            <i class="nav-icon fas fa-list"></i>
+                            <i class="nav-icon fas fa-images"></i>
                             <p>Sliders</p>
                         </router-link>
                     </li>
@@ -216,6 +230,18 @@
                         >
                             <i class="fas fa-file-pdf nav-icon"></i>
                             <p>Lista de Usuarios</p>
+                        </router-link>
+                    </li>
+                    <li
+                        class="nav-item"
+                        v-if="permisos.includes('reportes.usuarios')"
+                    >
+                        <router-link
+                            :to="{ name: 'reportes.usuarios' }"
+                            class="nav-link"
+                        >
+                            <i class="fas fa-file-pdf nav-icon"></i>
+                            <p>Hoja de rutas</p>
                         </router-link>
                     </li>
                     <li class="nav-header bg-navy">OTRAS OPCIONES</li>

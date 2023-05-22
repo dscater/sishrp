@@ -1,11 +1,11 @@
 @extends('layouts.principal')
 @section('css')
     <style>
+        .contenedor_opcion{
+            height: 200px;
+        }
         .btn_info_secundario {
-            display: flex;
-            justify-content: center;
-            align-content: center;
-            align-items: center;
+            height: 100%;
             flex-direction: column;
             box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
             -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
@@ -13,7 +13,6 @@
         }
 
         .btn_info_secundario a {
-
             display: inline-block;
             padding: 12px 24px;
             border: none;
@@ -23,6 +22,12 @@
             text-align: center;
             transition: background-color 0.3s ease;
             cursor: pointer;
+        }
+
+        .titulo_opciones {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.71);
+            color: white;
         }
     </style>
 @endsection
@@ -58,87 +63,63 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card scrollreveal">
-                    <div class="card-body">
+                    <div class="card-body bg_gradient">
                         <div class="row">
                             <div class="col-md-12">
-                                <h1 class="text-sm text-center font-weight-bold">BIENVENID@S
+                                <h1 class="text-sm text-center font-weight-bold text-white">
+                                    BIENVENID@S
                                     A LA PÁGINA OFICIAL DEL
                                     MUNICIPIO DE YACO DE LA PROVINCIA LOAYZA</h1>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="card scrollreveal">
+                <div class="card scrollreveal bg_gradient">
                     <div class="card-body">
                         <div class="col-md-12">
                             <div class="row">
-                                <div class="col-md-4 form-group">
-                                    <div class="p-4 btn_info_secundario"
+                                <a href=""class="col-md-12 form-group contenedor_opcion">
+                                    <div class="btn_info_secundario"
+                                        style="background:url('{{ asset('imgs/gamy.jpeg') }}');background-size:cover; background-position:center;">
+                                        <h5 class="d-block text-center titulo_opciones">GAMY <i class="fa fa-arrow-right"></i></h5>
+                                    </div>
+                                </a>
+                                <a href="" class="col-md-4 form-group contenedor_opcion">
+                                    <div class="btn_info_secundario"
                                         style="background:url('{{ asset('imgs/fondo_noticias.jpg') }}');background-size:cover; background-position:center;">
-                                        <h5 class="d-block text-center">NOTICIAS</h5>
-                                        <a href="" class="d-block text-center btn-success text-md rounded-circle p-2"
-                                            style="width: 90px;">
-                                            <img src="{{ asset('imgs/news.png') }}" alt="" loading="lazy"><br>
-                                            Ver
-                                        </a>
+                                        <h5 class="d-block text-center titulo_opciones">NOTICIAS <i class="fa fa-arrow-right"></i></h5>
                                     </div>
-                                </div>
-                                <div class="col-md-4 form-group">
-                                    <div class="p-4 btn_info_secundario"
+                                </a>
+                                <a href="" class="col-md-4 form-group contenedor_opcion">
+                                    <div class="btn_info_secundario"
                                         style="background:url('{{ asset('imgs/fondo_turismo.jpg') }}');background-size:cover; background-position:center;">
-                                        <h5 class="d-block text-center">TURISMO</h5>
-                                        <a href="" class="d-block text-center btn-success text-md rounded-circle p-2"
-                                            style="width: 90px;">
-                                            <img src="{{ asset('imgs/map.png') }}" alt="" loading="lazy"><br>
-                                            Ver
-                                        </a>
+                                        <h5 class="d-block text-center titulo_opciones">TURISMO <i class="fa fa-arrow-right"></i></h5>
                                     </div>
-                                </div>
-                                <div class="col-md-4 form-group">
-                                    <div class="p-4 btn_info_secundario"
+                                </a>
+                                <a href="" class="col-md-4 form-group contenedor_opcion">
+                                    <div class="btn_info_secundario"
                                         style="background:url('{{ asset('imgs/fondo_deportes.jpg') }}');background-size:cover; background-position:center;">
-                                        <h5 class="d-block text-center">DEPORTES</h5>
-                                        <a href="" class="d-block text-center btn-success text-md rounded-circle p-2"
-                                            style="width: 90px;">
-                                            <img src="{{ asset('imgs/soccer.png') }}" alt="" loading="lazy"><br>
-                                            Ver
-                                        </a>
+                                        <h5 class="d-block text-center titulo_opciones">DEPORTES <i class="fa fa-arrow-right"></i></h5>
                                     </div>
-                                </div>
-                                <div class="col-md-4 form-group">
-                                    <div class="p-4 btn_info_secundario"
+                                </a>
+                                <a href="" class="col-md-4 form-group contenedor_opcion">
+                                    <div class="btn_info_secundario"
                                         style="background:url('{{ asset('imgs/iglesia.jpg') }}');background-size:cover; background-position:center;">
-                                        <h5 class="d-block text-center">COMUNICADOS</h5>
-                                        <a href="" class="d-block text-center btn-success text-md rounded-circle p-2"
-                                            style="width: 90px;">
-                                            <img src="{{ asset('imgs/comunicado.png') }}" alt="" loading="lazy"><br>
-                                            Ver
-                                        </a>
+                                        <h5 class="d-block text-center titulo_opciones">COMUNICADOS <i class="fa fa-arrow-right"></i></h5>
                                     </div>
-                                </div>
-                                <div class="col-md-4 form-group">
-                                    <div class="p-4 btn_info_secundario"
+                                </a>
+                                <a href="" class="col-md-4 form-group contenedor_opcion">
+                                    <div class="btn_info_secundario"
                                         style="background:url('{{ asset('imgs/convocatoria.jpg') }}');background-size:cover; background-position:center;">
-                                        <h5 class="d-block text-center">CONVOCATORIAS</h5>
-                                        <a href="" class="d-block text-center btn-success text-md rounded-circle p-2"
-                                            style="width: 90px;">
-                                            <img src="{{ asset('imgs/comunicado.png') }}" alt=""
-                                                loading="lazy"><br>
-                                            Ver
-                                        </a>
+                                        <h5 class="d-block text-center titulo_opciones">CONVOCATORIAS <i class="fa fa-arrow-right"></i></h5>
                                     </div>
-                                </div>
-                                <div class="col-md-4 form-group"
+                                </a>
+                                <a href="" class="col-md-4 form-group contenedor_opcion"
                                     style="background:url('{{ asset('imgs/actividad.jpg') }}');background-size:cover; background-position:center;">
-                                    <div class="p-4 btn_info_secundario">
-                                        <h5 class="d-block text-center">ACTIVIDADES</h5>
-                                        <a href="" class="d-block text-center btn-success text-md rounded-circle p-2"
-                                            style="width: 90px;">
-                                            <img src="{{ asset('imgs/reunion.png') }}" alt=""><br>
-                                            Ver
-                                        </a>
+                                    <div class="btn_info_secundario">
+                                        <h5 class="d-block text-center titulo_opciones">ACTIVIDADES <i class="fa fa-arrow-right"></i></h5>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -147,29 +128,15 @@
         </div>
 
         <div class="row">
-            <div class="col-md-12">
-                <div class="card scrollreveal">
-                    <div class="card-body">
-                        <div class="col-md-12">
-                            <div class="row">
-                                <div class="col-md-12 text-center">
-                                    <strong>CONTACTOS</strong>
-                                </div>
-                                <div class="col-md-12 text-center">
-                                    <a href="" class="btn btn-primary"><i class="fab fa-facebook"></i>
-                                        Facebook</a>
-                                    <a href="" class="btn btn-success"><i class="fab fa-whatsapp-square"></i>
-                                        Whatsapp</a>
-                                    <a href="" class="btn btn-info"><i class="fab fa-twitter-square"></i>
-                                        Twitter</a>
-                                    <a href="" class="btn btn-primary"><i class="fab fa-linkedin"></i>
-                                        Linkedin</a>
-                                </div>
-                            </div>
-                        </div>
+            <div class="col-md-6 ml-auto mr-auto">
+                <div class="card">
+                    <div class="card-body scrollreveal">
+                        <video src="{{ asset('videos/municipio_yaco.mp4') }}" preload="none" controls
+                            style="width:100%;"></video>
                     </div>
                 </div>
             </div>
         </div>
+        @include('portal.contactos')
     </div>
 @endsection

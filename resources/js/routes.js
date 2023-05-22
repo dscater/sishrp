@@ -37,7 +37,7 @@ export default new Router({
         // Hoja de rutas
         {
             path: "/administracion/hoja_rutas",
-            name: "marcas.index",
+            name: "hoja_rutas.index",
             component: require("./components/modulos/hoja_rutas/index.vue")
                 .default,
         },
@@ -45,7 +45,7 @@ export default new Router({
         // portal_gamy
         {
             path: "/administracion/portal_gamy",
-            name: "marcas.index",
+            name: "portal_gamy.index",
             component: require("./components/modulos/portal_gamy/index.vue")
                 .default,
         },
@@ -53,7 +53,7 @@ export default new Router({
         // sliders
         {
             path: "/administracion/sliders",
-            name: "marcas.index",
+            name: "sliders.index",
             component: require("./components/modulos/sliders/index.vue")
                 .default,
         },

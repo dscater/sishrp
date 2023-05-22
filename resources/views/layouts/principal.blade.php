@@ -67,6 +67,7 @@
         }
 
         body {
+            position: relative;
             background: rgb(4, 78, 4) !important;
         }
 
@@ -87,11 +88,49 @@
             }
         }
 
-        .scrollreveal {
+        /* .scrollreveal {
             animation: bounceIn 1s;
             visibility: hidden;
             animation-fill-mode: forwards;
-            /* Mantener el estado final de la animación */
+        } */
+
+        .bg_gradient {
+            background: linear-gradient(135deg, #003366, #006633);
+        }
+
+        /* loader */
+        .loader {
+            position: fixed;
+            display: flex;
+            top:0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.619);
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100vw;
+            z-index: 999999;
+        }
+
+        .loader::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 6px solid #ccc;
+            border-top-color: #555;
+            animation: spin 1s infinite linear;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
     </style>
 
@@ -101,6 +140,9 @@
 </head>
 
 <body class="sidebar-mini layout-fixed control-sidebar-slide-open layout-navbar-fixed text-sm">
+    <div class="loader">
+        <div class="spinner"></div>
+    </div>
     <div id="app" class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary p-3">
             <a class="navbar-brand" href="/"><img src="{{ asset('imgs/' . $configuracion->first()->logo) }}"
@@ -138,6 +180,9 @@
     <script src="https://unpkg.com/scrollreveal"></script>
     <script>
         $(document).ready(function() {
+            setTimeout(() => {
+                $(".loader").hide();
+            }, 200);
             // Inicializar el slider de Bootstrap
             $('#myCarousel').carousel();
 
@@ -155,9 +200,9 @@
 
             ScrollReveal().reveal('.scrollreveal', {
                 distance: '20px',
-                duration: 1000,
-                reset: true,
-                viewFactor: 0.2,
+                duration: 1500,
+                reset: false,
+                viewFactor: 0.3,
                 afterReveal: function(element) {
                     element.style.visibility = 'visible'; // Mostrar el elemento después de la animación
                 }

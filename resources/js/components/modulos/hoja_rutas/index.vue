@@ -4,7 +4,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Marca de vehículos</h1>
+                        <h1>Hoja de Ruta</h1>
                     </div>
                 </div>
             </div>
@@ -20,13 +20,13 @@
                                         <button
                                             v-if="
                                                 permisos.includes(
-                                                    'marcas.create'
+                                                    'hoja_rutas.create'
                                                 )
                                             "
                                             class="btn btn-primary btn-flat btn-block"
                                             @click="
                                                 abreModal('nuevo');
-                                                limpiaMarca();
+                                                limpiaHojaRuta();
                                             "
                                         >
                                             <i class="fa fa-plus"></i>
@@ -122,10 +122,10 @@
                                                             class="btn-flat btn-block"
                                                             title="Eliminar registro"
                                                             @click="
-                                                                eliminaMarca(
+                                                                eliminaHojaRuta(
                                                                     row.item.id,
                                                                     row.item
-                                                                        .marca
+                                                                        .hoja_ruta
                                                                 )
                                                             "
                                                         >
@@ -185,8 +185,14 @@ export default {
             listRegistros: [],
             showOverlay: false,
             fields: [
-                { key: "marca", label: "Marca", sortable: true },
-                { key: "descripcion", label: "Descripción", sortable: true },
+                { key: "nro_hoja_ruta", label: "N° de hoja de ruta", sortable: true },
+                { key: "procedencia", label: "Procedencia", sortable: true },
+                { key: "referencia", label: "Referencia", sortable: true },
+                { key: "fecha_recepcion", label: "Fecha de recepción", sortable: true },
+                { key: "hora", label: "Hora", sortable: true },
+                { key: "nro_hojas", label: "N° de hojas", sortable: true },
+                { key: "destinatario", label: "Detalle destinatario", sortable: true },
+                { key: "fecha", label: "Fecha", sortable: true },
                 { key: "accion", label: "Acción" },
             ],
             loading: true,
@@ -196,9 +202,9 @@ export default {
             }),
             muestra_modal: false,
             modal_accion: "nuevo",
-            oMarca: {
+            oHojaRuta: {
                 id: 0,
-                marca: "",
+                hoja_ruta: "",
                 descripcion: "",
             },
             currentPage: 1,
@@ -217,24 +223,24 @@ export default {
     },
     mounted() {
         this.loadingWindow.close();
-        this.getMarcas();
+        this.getHojaRutas();
     },
     methods: {
         // Seleccionar Opciones de Tabla
         editarRegistro(item) {
-            this.oMarca.id = item.id;
-            this.oMarca.marca = item.marca ? item.marca : "";
-            this.oMarca.descripcion = item.descripcion ? item.descripcion : "";
+            this.oHojaRuta.id = item.id;
+            this.oHojaRuta.hoja_ruta = item.hoja_ruta ? item.hoja_ruta : "";
+            this.oHojaRuta.descripcion = item.descripcion ? item.descripcion : "";
 
             this.modal_accion = "edit";
             this.muestra_modal = true;
         },
 
-        // Listar Marcas
-        getMarcas() {
+        // Listar HojaRutas
+        getHojaRutas() {
             this.showOverlay = true;
             this.muestra_modal = false;
-            let url = "/admin/marcas";
+            let url = "/admin/hoja_rutas";
             if (this.pagina != 0) {
                 url += "?page=" + this.pagina;
             }
@@ -244,11 +250,11 @@ export default {
                 })
                 .then((res) => {
                     this.showOverlay = false;
-                    this.listRegistros = res.data.marcas;
+                    this.listRegistros = res.data.hoja_rutas;
                     this.totalRows = res.data.total;
                 });
         },
-        eliminaMarca(id, descripcion) {
+        eliminaHojaRuta(id, descripcion) {
             Swal.fire({
                 title: "¿Quierés eliminar este registro?",
                 html: `<strong>${descripcion}</strong>`,
@@ -261,11 +267,11 @@ export default {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
                     axios
-                        .post("/admin/marcas/" + id, {
+                        .post("/admin/hoja_rutas/" + id, {
                             _method: "DELETE",
                         })
                         .then((res) => {
-                            this.getMarcas();
+                            this.getHojaRutas();
                             this.filter = "";
                             Swal.fire({
                                 icon: "success",
@@ -300,11 +306,11 @@ export default {
                 }
             });
         },
-        abreModal(tipo_accion = "nuevo", marca = null) {
+        abreModal(tipo_accion = "nuevo", hoja_ruta = null) {
             this.muestra_modal = true;
             this.modal_accion = tipo_accion;
-            if (marca) {
-                this.oMarca = marca;
+            if (hoja_ruta) {
+                this.oHojaRuta = hoja_ruta;
             }
         },
         onFiltered(filteredItems) {
@@ -312,9 +318,9 @@ export default {
             this.totalRows = filteredItems.length;
             this.currentPage = 1;
         },
-        limpiaMarca() {
-            this.oMarca.marca = "";
-            this.oMarca.descripcion = "";
+        limpiaHojaRuta() {
+            this.oHojaRuta.hoja_ruta = "";
+            this.oHojaRuta.descripcion = "";
         },
         formatoFecha(date) {
             return this.$moment(String(date)).format("DD/MM/YYYY");
