@@ -4,7 +4,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Marca de vehículos</h1>
+                        <h1>Sliders</h1>
                     </div>
                 </div>
             </div>
@@ -20,13 +20,13 @@
                                         <button
                                             v-if="
                                                 permisos.includes(
-                                                    'marcas.create'
+                                                    'sliders.create'
                                                 )
                                             "
                                             class="btn btn-primary btn-flat btn-block"
                                             @click="
                                                 abreModal('nuevo');
-                                                limpiaMarca();
+                                                limpiaSlider();
                                             "
                                         >
                                             <i class="fa fa-plus"></i>
@@ -84,15 +84,13 @@
                                                 empty-filtered-text="Sin resultados"
                                                 :filter="filter"
                                             >
-                                                <template
-                                                    #cell(fecha_registro)="row"
-                                                >
-                                                    {{
-                                                        formatoFecha(
-                                                            row.item
-                                                                .fecha_registro
-                                                        )
-                                                    }}
+                                                <template #cell(imagen)="row">
+                                                    <img
+                                                        :src="
+                                                            row.item.url_imagen
+                                                        "
+                                                        style="max-width: 60vw;"
+                                                    />
                                                 </template>
 
                                                 <template #cell(accion)="row">
@@ -122,10 +120,10 @@
                                                             class="btn-flat btn-block"
                                                             title="Eliminar registro"
                                                             @click="
-                                                                eliminaMarca(
+                                                                eliminaSlider(
                                                                     row.item.id,
                                                                     row.item
-                                                                        .marca
+                                                                        .url_imagen
                                                                 )
                                                             "
                                                         >
@@ -176,9 +174,9 @@
         <Nuevo
             :muestra_modal="muestra_modal"
             :accion="modal_accion"
-            :marca="oMarca"
+            :slider="oSlider"
             @close="muestra_modal = false"
-            @envioModal="getMarcas"
+            @envioModal="getSliders"
         ></Nuevo>
     </div>
 </template>
@@ -196,8 +194,8 @@ export default {
             listRegistros: [],
             showOverlay: false,
             fields: [
-                { key: "marca", label: "Marca", sortable: true },
-                { key: "descripcion", label: "Descripción", sortable: true },
+                { key: "id", label: "Id", sortable: true },
+                { key: "imagen", label: "Slider", sortable: true },
                 { key: "accion", label: "Acción" },
             ],
             loading: true,
@@ -207,10 +205,10 @@ export default {
             }),
             muestra_modal: false,
             modal_accion: "nuevo",
-            oMarca: {
+            oSlider: {
                 id: 0,
-                marca: "",
-                descripcion: "",
+                imagen: "",
+                url_imagen: "",
             },
             currentPage: 1,
             perPage: 5,
@@ -228,26 +226,24 @@ export default {
     },
     mounted() {
         this.loadingWindow.close();
-        this.getMarcas();
+        this.getSliders();
     },
     methods: {
         // Seleccionar Opciones de Tabla
         editarRegistro(item) {
-            this.oMarca.id = item.id;
-            this.oMarca.marca = item.marca ? item.marca : "";
-            this.oMarca.descripcion = item.descripcion
-                ? item.descripcion
-                : "";
+            this.oSlider.id = item.id;
+            this.oSlider.imagen = item.imagen ? item.imagen : "";
+            this.oSlider.url_imagen = item.url_imagen ? item.url_imagen : "";
 
             this.modal_accion = "edit";
             this.muestra_modal = true;
         },
 
-        // Listar Marcas
-        getMarcas() {
+        // Listar Sliders
+        getSliders() {
             this.showOverlay = true;
             this.muestra_modal = false;
-            let url = "/admin/marcas";
+            let url = "/admin/sliders";
             if (this.pagina != 0) {
                 url += "?page=" + this.pagina;
             }
@@ -257,14 +253,14 @@ export default {
                 })
                 .then((res) => {
                     this.showOverlay = false;
-                    this.listRegistros = res.data.marcas;
+                    this.listRegistros = res.data.sliders;
                     this.totalRows = res.data.total;
                 });
         },
-        eliminaMarca(id, descripcion) {
+        eliminaSlider(id, url_imagen) {
             Swal.fire({
                 title: "¿Quierés eliminar este registro?",
-                html: `<strong>${descripcion}</strong>`,
+                html: `<img src="${url_imagen}" width="100%">`,
                 showCancelButton: true,
                 confirmButtonColor: "#dc3545",
                 confirmButtonText: "Si, eliminar",
@@ -274,11 +270,11 @@ export default {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
                     axios
-                        .post("/admin/marcas/" + id, {
+                        .post("/admin/sliders/" + id, {
                             _method: "DELETE",
                         })
                         .then((res) => {
-                            this.getMarcas();
+                            this.getSliders();
                             this.filter = "";
                             Swal.fire({
                                 icon: "success",
@@ -313,11 +309,11 @@ export default {
                 }
             });
         },
-        abreModal(tipo_accion = "nuevo", marca = null) {
+        abreModal(tipo_accion = "nuevo", slider = null) {
             this.muestra_modal = true;
             this.modal_accion = tipo_accion;
-            if (marca) {
-                this.oMarca = marca;
+            if (slider) {
+                this.oSlider = slider;
             }
         },
         onFiltered(filteredItems) {
@@ -325,9 +321,8 @@ export default {
             this.totalRows = filteredItems.length;
             this.currentPage = 1;
         },
-        limpiaMarca() {
-            this.oMarca.marca = "";
-            this.oMarca.descripcion = "";
+        limpiaSlider() {
+            this.oSlider.imagen = "";
         },
         formatoFecha(date) {
             return this.$moment(String(date)).format("DD/MM/YYYY");

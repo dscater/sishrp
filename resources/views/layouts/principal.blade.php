@@ -68,7 +68,6 @@
 
         body {
             position: relative;
-            background: rgb(4, 78, 4) !important;
         }
 
         @keyframes bounceIn {

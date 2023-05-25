@@ -1,9 +1,10 @@
 @extends('layouts.principal')
 @section('css')
     <style>
-        .contenedor_opcion{
+        .contenedor_opcion {
             height: 200px;
         }
+
         .btn_info_secundario {
             height: 100%;
             flex-direction: column;
@@ -33,21 +34,51 @@
 @endsection
 @section('content')
     <div id="myCarousel" class="carousel slide d-block" data-ride="carousel">
-        <!-- Indicadores -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-        </ol>
+        @if (count($sliders) > 0)
+            <!-- Indicadores desde la BD -->
+            <ol class="carousel-indicators">
+                @foreach ($sliders as $key => $s)
+                    @php
+                        $active = '';
+                        if ($key == 0) {
+                            $active = 'active';
+                        }
+                    @endphp
+                    <li data-target="#myCarousel" data-slide-to="{{ $key }}" class="{{ $active }}"></li>
+                @endforeach
+            </ol>
 
-        <!-- Contenido de los slides -->
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="d-block w-100" src="{{ asset('imgs/slide01.jpg') }}" alt="Slide 1">
+            <!-- Contenido de los slides -->
+            <div class="carousel-inner">
+                @foreach ($sliders as $key => $s)
+                    @php
+                        $active = '';
+                        if ($key == 0) {
+                            $active = ' active';
+                        }
+                    @endphp
+                    <div class="carousel-item{{ $active }}">
+                        <img class="d-block w-100" src="{{ $s->url_imagen }}" alt="Slide {{ $key }}">
+                    </div>
+                @endforeach
             </div>
-            <div class="carousel-item">
-                <img class="d-block w-100" src="{{ asset('imgs/slide02.jpg') }}" alt="Slide 2">
+        @else
+            <!-- Indicadores cuando no hay sliders registrados -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+            </ol>
+
+            <!-- Contenido de los slides -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="{{ asset('imgs/slide01.jpg') }}" alt="Slide 1">
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="{{ asset('imgs/slide02.jpg') }}" alt="Slide 2">
+                </div>
             </div>
-        </div>
+        @endif
 
         <!-- Controles de navegación -->
         <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
@@ -81,43 +112,50 @@
                                 <a href=""class="col-md-12 form-group contenedor_opcion">
                                     <div class="btn_info_secundario"
                                         style="background:url('{{ asset('imgs/gamy.jpeg') }}');background-size:cover; background-position:center;">
-                                        <h5 class="d-block text-center titulo_opciones">GAMY <i class="fa fa-arrow-right"></i></h5>
+                                        <h5 class="d-block text-center titulo_opciones">GAMY <i
+                                                class="fa fa-arrow-right"></i></h5>
                                     </div>
                                 </a>
                                 <a href="" class="col-md-4 form-group contenedor_opcion">
                                     <div class="btn_info_secundario"
                                         style="background:url('{{ asset('imgs/fondo_noticias.jpg') }}');background-size:cover; background-position:center;">
-                                        <h5 class="d-block text-center titulo_opciones">NOTICIAS <i class="fa fa-arrow-right"></i></h5>
+                                        <h5 class="d-block text-center titulo_opciones">NOTICIAS <i
+                                                class="fa fa-arrow-right"></i></h5>
                                     </div>
                                 </a>
                                 <a href="" class="col-md-4 form-group contenedor_opcion">
                                     <div class="btn_info_secundario"
                                         style="background:url('{{ asset('imgs/fondo_turismo.jpg') }}');background-size:cover; background-position:center;">
-                                        <h5 class="d-block text-center titulo_opciones">TURISMO <i class="fa fa-arrow-right"></i></h5>
+                                        <h5 class="d-block text-center titulo_opciones">TURISMO <i
+                                                class="fa fa-arrow-right"></i></h5>
                                     </div>
                                 </a>
                                 <a href="" class="col-md-4 form-group contenedor_opcion">
                                     <div class="btn_info_secundario"
                                         style="background:url('{{ asset('imgs/fondo_deportes.jpg') }}');background-size:cover; background-position:center;">
-                                        <h5 class="d-block text-center titulo_opciones">DEPORTES <i class="fa fa-arrow-right"></i></h5>
+                                        <h5 class="d-block text-center titulo_opciones">DEPORTES <i
+                                                class="fa fa-arrow-right"></i></h5>
                                     </div>
                                 </a>
                                 <a href="" class="col-md-4 form-group contenedor_opcion">
                                     <div class="btn_info_secundario"
                                         style="background:url('{{ asset('imgs/iglesia.jpg') }}');background-size:cover; background-position:center;">
-                                        <h5 class="d-block text-center titulo_opciones">COMUNICADOS <i class="fa fa-arrow-right"></i></h5>
+                                        <h5 class="d-block text-center titulo_opciones">COMUNICADOS <i
+                                                class="fa fa-arrow-right"></i></h5>
                                     </div>
                                 </a>
                                 <a href="" class="col-md-4 form-group contenedor_opcion">
                                     <div class="btn_info_secundario"
                                         style="background:url('{{ asset('imgs/convocatoria.jpg') }}');background-size:cover; background-position:center;">
-                                        <h5 class="d-block text-center titulo_opciones">CONVOCATORIAS <i class="fa fa-arrow-right"></i></h5>
+                                        <h5 class="d-block text-center titulo_opciones">CONVOCATORIAS <i
+                                                class="fa fa-arrow-right"></i></h5>
                                     </div>
                                 </a>
                                 <a href="" class="col-md-4 form-group contenedor_opcion"
                                     style="background:url('{{ asset('imgs/actividad.jpg') }}');background-size:cover; background-position:center;">
                                     <div class="btn_info_secundario">
-                                        <h5 class="d-block text-center titulo_opciones">ACTIVIDADES <i class="fa fa-arrow-right"></i></h5>
+                                        <h5 class="d-block text-center titulo_opciones">ACTIVIDADES <i
+                                                class="fa fa-arrow-right"></i></h5>
                                     </div>
                                 </a>
                             </div>

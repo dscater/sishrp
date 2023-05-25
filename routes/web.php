@@ -11,6 +11,7 @@ use App\Http\Controllers\PortalGamyController;
 use App\Http\Controllers\PortalNoticiaController;
 use App\Http\Controllers\PortalTurismoDeporteController;
 use App\Http\Controllers\ReporteController;
+use App\Http\Controllers\SliderController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -49,6 +50,11 @@ Route::middleware(['auth'])->group(function () {
 
         // historial acciones
         Route::resource('historial_accions', HistorialAccionController::class)->only([
+            'index', 'store', 'update', 'destroy', 'show'
+        ]);
+
+        // portal sliders
+        Route::resource('sliders', SliderController::class)->only([
             'index', 'store', 'update', 'destroy', 'show'
         ]);
 

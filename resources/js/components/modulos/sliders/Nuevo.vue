@@ -23,49 +23,34 @@
                 <div class="modal-body">
                     <form>
                         <div class="row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-12">
                                 <label
                                     :class="{
-                                        'text-danger': errors.marca,
+                                        'text-danger': errors.imagen,
                                     }"
-                                    >Marca*</label
+                                    >Seleccionar imagen*</label
                                 >
-                                <el-input
-                                    placeholder="Marca"
-                                    :class="{ 'is-invalid': errors.marca }"
-                                    v-model="marca.marca"
-                                    clearable
-                                >
-                                </el-input>
+                                <input
+                                    type="file"
+                                    ref="input_img"
+                                    class="form-control"
+                                    @change="cargaImagen"
+                                />
                                 <span
                                     class="error invalid-feedback"
-                                    v-if="errors.marca"
-                                    v-text="errors.marca[0]"
+                                    v-if="errors.imagen"
+                                    v-text="errors.imagen[0]"
                                 ></span>
                             </div>
-                            <div class="form-group col-md-6">
-                                <label
-                                    :class="{
-                                        'text-danger': errors.descripcion,
-                                    }"
-                                    >Descripción</label
-                                >
-                                <el-input
-                                    type="textarea"
-                                    autosize
-                                    placeholder="Descripción"
-                                    :class="{
-                                        'is-invalid': errors.descripcion,
-                                    }"
-                                    v-model="marca.descripcion"
-                                    clearable
-                                >
-                                </el-input>
-                                <span
-                                    class="error invalid-feedback"
-                                    v-if="errors.descripcion"
-                                    v-text="errors.descripcion[0]"
-                                ></span>
+                            <div class="form-group col-md-12">
+                                <label>Previsualización</label>
+                                <img
+                                    v-if="oSlider && oSlider?.url_imagen != ''"
+                                    :src="oSlider?.url_imagen"
+                                    alt="Imagen"
+                                    width="100%"
+                                />
+                                <span v-else>No se cargo ninguna imagen</span>
                             </div>
                         </div>
                     </form>
@@ -103,12 +88,12 @@ export default {
             type: String,
             default: "nuevo",
         },
-        marca: {
+        slider: {
             type: Object,
             default: {
                 id: 0,
-                marca: "",
-                descripcion: "",
+                imagen: "",
+                url_imagen: "",
             },
         },
     },
@@ -117,6 +102,11 @@ export default {
             this.errors = [];
             if (newVal) {
                 this.bModal = true;
+                this.$refs.input_img.value = null;
+                if (this.accion != "edit") {
+                    this.oSlider.imagen = null;
+                    this.oSlider.url_imagen = "";
+                }
             } else {
                 this.bModal = false;
             }
@@ -143,6 +133,7 @@ export default {
             user: JSON.parse(localStorage.getItem("user")),
             bModal: this.muestra_modal,
             enviando: false,
+            oSlider: this.slider,
             errors: [],
         };
     },
@@ -154,7 +145,7 @@ export default {
             this.enviando = true;
             try {
                 this.textoBtn = "Enviando...";
-                let url = "/admin/marcas";
+                let url = "/admin/sliders";
                 let config = {
                     headers: {
                         "Content-Type": "multipart/form-data",
@@ -162,18 +153,12 @@ export default {
                 };
                 let formdata = new FormData();
                 formdata.append(
-                    "marca",
-                    this.marca.marca ? this.marca.marca : ""
-                );
-                formdata.append(
-                    "descripcion",
-                    this.marca.descripcion
-                        ? this.marca.descripcion
-                        : ""
+                    "imagen",
+                    this.oSlider.imagen ? this.oSlider.imagen : ""
                 );
 
                 if (this.accion == "edit") {
-                    url = "/admin/marcas/" + this.marca.id;
+                    url = "/admin/sliders/" + this.oSlider.id;
                     formdata.append("_method", "PUT");
                 }
                 axios
@@ -187,7 +172,7 @@ export default {
                                 showConfirmButton: false,
                                 timer: 1500,
                             });
-                            this.limpiaMarca();
+                            this.limpiaSlider();
                             this.$emit("envioModal");
                             this.errors = [];
                             if (this.accion == "edit") {
@@ -244,10 +229,27 @@ export default {
             this.bModal = false;
             this.$emit("close");
         },
-        limpiaMarca() {
+        limpiaSlider() {
             this.errors = [];
-            this.marca.marca = "";
-            this.marca.descripcion = "";
+            this.oSlider.slider = "";
+            this.oSlider.descripcion = "";
+        },
+        cargaImagen() {
+            let archivo = this.$refs.input_img.files[0];
+            if (typeof archivo != "undefined") {
+                this.oSlider.imagen = archivo;
+                this.previewImagen(archivo);
+            } else {
+                this.oSlider.url_imagen = "";
+                this.oSlider.imagen = null;
+            }
+        },
+        previewImagen(archivo) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                this.oSlider.url_imagen = e.target.result;
+            };
+            reader.readAsDataURL(archivo);
         },
     },
 };
