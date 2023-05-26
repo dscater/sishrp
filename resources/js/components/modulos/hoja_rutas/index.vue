@@ -17,21 +17,18 @@
                             <div class="card-header">
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <button
+                                        <router-link
                                             v-if="
                                                 permisos.includes(
                                                     'hoja_rutas.create'
                                                 )
                                             "
                                             class="btn btn-primary btn-flat btn-block"
-                                            @click="
-                                                abreModal('nuevo');
-                                                limpiaHojaRuta();
-                                            "
+                                            :to="{ name: 'hoja_rutas.create' }"
                                         >
                                             <i class="fa fa-plus"></i>
                                             Nuevo
-                                        </button>
+                                        </router-link>
                                     </div>
                                 </div>
                             </div>
@@ -185,13 +182,25 @@ export default {
             listRegistros: [],
             showOverlay: false,
             fields: [
-                { key: "nro_hoja_ruta", label: "N° de hoja de ruta", sortable: true },
+                {
+                    key: "nro_hoja_ruta",
+                    label: "N° de hoja de ruta",
+                    sortable: true,
+                },
                 { key: "procedencia", label: "Procedencia", sortable: true },
                 { key: "referencia", label: "Referencia", sortable: true },
-                { key: "fecha_recepcion", label: "Fecha de recepción", sortable: true },
+                {
+                    key: "fecha_recepcion",
+                    label: "Fecha de recepción",
+                    sortable: true,
+                },
                 { key: "hora", label: "Hora", sortable: true },
                 { key: "nro_hojas", label: "N° de hojas", sortable: true },
-                { key: "destinatario", label: "Detalle destinatario", sortable: true },
+                {
+                    key: "destinatario",
+                    label: "Detalle destinatario",
+                    sortable: true,
+                },
                 { key: "fecha", label: "Fecha", sortable: true },
                 { key: "accion", label: "Acción" },
             ],
@@ -200,8 +209,6 @@ export default {
             loadingWindow: Loading.service({
                 fullscreen: this.fullscreenLoading,
             }),
-            muestra_modal: false,
-            modal_accion: "nuevo",
             oHojaRuta: {
                 id: 0,
                 hoja_ruta: "",
@@ -230,7 +237,9 @@ export default {
         editarRegistro(item) {
             this.oHojaRuta.id = item.id;
             this.oHojaRuta.hoja_ruta = item.hoja_ruta ? item.hoja_ruta : "";
-            this.oHojaRuta.descripcion = item.descripcion ? item.descripcion : "";
+            this.oHojaRuta.descripcion = item.descripcion
+                ? item.descripcion
+                : "";
 
             this.modal_accion = "edit";
             this.muestra_modal = true;
@@ -305,13 +314,6 @@ export default {
                         });
                 }
             });
-        },
-        abreModal(tipo_accion = "nuevo", hoja_ruta = null) {
-            this.muestra_modal = true;
-            this.modal_accion = tipo_accion;
-            if (hoja_ruta) {
-                this.oHojaRuta = hoja_ruta;
-            }
         },
         onFiltered(filteredItems) {
             // Trigger pagination to update the number of buttons/pages due to filtering

@@ -41,6 +41,19 @@ export default new Router({
             component: require("./components/modulos/hoja_rutas/index.vue")
                 .default,
         },
+        {
+            path: "/administracion/hoja_rutas/create",
+            name: "hoja_rutas.create",
+            component: require("./components/modulos/hoja_rutas/create.vue")
+                .default,
+        },
+        {
+            path: "/administracion/hoja_rutas/:id",
+            name: "hoja_rutas.edit",
+            props: true,
+            component: require("./components/modulos/hoja_rutas/edit.vue")
+                .default,
+        },
 
         // portal_gamy
         {

@@ -11,10 +11,18 @@ use Illuminate\Support\Facades\DB;
 class HojaRutaController extends Controller
 {
     public $validacion = [
-        'hoja_ruta' => 'required|min:2',
+        "procedencia" => "required|min:2",
+        "referencia" => "required|min:2",
+        "fecha_recepcion" => "required|date",
+        "hora" => "required|date_format:H:i",
+        "nro_hojas" => "required|numeric|min:1"
     ];
 
-    public $mensajes = [];
+    public $mensajes = [
+        "destinatario.required" => "El campo destinatario es obligatorio",
+        "descripcion.required" => "El campo descripción es obligatorio",
+        "fecha.required" => "El campo fecha es obligatorio",
+    ];
 
     public function index(Request $request)
     {
@@ -30,15 +38,37 @@ class HojaRutaController extends Controller
 
     public function store(Request $request)
     {
+        $this->validacion["destinatario"] = "required|min:2";
+        $this->validacion["descripcion"] = "required|min:2";
+        $this->validacion["fecha"] = "required|date";
         $request->validate($this->validacion, $this->mensajes);
 
         DB::beginTransaction();
         try {
             // crear HojaRuta
             $request["fecha_registro"] = date("Y-m-d");
-            $nuevo_hoja_ruta = HojaRuta::create(array_map('mb_strtoupper', $request->all()));
+            $request["nro_hoja_ruta"] = HojaRuta::getNroHojaRuta();
+            $request["user_id"] = Auth::user()->id;
+            $nueva_hoja_ruta = HojaRuta::create(array_map('mb_strtoupper', $request->all()));
 
-            $datos_original = HistorialAccion::getDetalleRegistro($nuevo_hoja_ruta, "hoja_rutas");
+            $nueva_hoja_ruta->destinatarios()->create([
+                "destinatario" => $request->destinatario,
+                "informe" => $request->informe,
+                "asista" => $request->asista,
+                "responda" => $request->responda,
+                "ejecute" => $request->ejecute,
+                "difunda" => $request->difunda,
+                "coordine" => $request->coordine,
+                "ver_antecedente" => $request->ver_antecedente,
+                "acelere_tramite" => $request->acelere_tramite,
+                "para_conocimiento" => $request->para_conocimiento,
+                "archivo" => $request->archivo,
+                "descripcion" => $request->descripcion,
+                "fecha" => $request->fecha,
+                "user_id" => $request->user_id
+            ]);
+
+            $datos_original = HistorialAccion::getDetalleRegistro($nueva_hoja_ruta, "hoja_rutas");
             HistorialAccion::create([
                 'user_id' => Auth::user()->id,
                 'accion' => 'CREACIÓN',
@@ -52,7 +82,7 @@ class HojaRutaController extends Controller
             DB::commit();
             return response()->JSON([
                 'sw' => true,
-                'hoja_ruta' => $nuevo_hoja_ruta,
+                'hoja_ruta' => $nueva_hoja_ruta,
                 'msj' => 'El registro se realizó de forma correcta',
             ], 200);
         } catch (\Exception $e) {
