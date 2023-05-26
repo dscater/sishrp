@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 22-05-2023 a las 15:31:14
+-- Tiempo de generación: 26-05-2023 a las 17:25:58
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 7.4.19
 
@@ -72,9 +72,22 @@ CREATE TABLE `destinatarios` (
   `archivo` int NOT NULL,
   `descripcion` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `fecha` date NOT NULL,
+  `user_id` bigint UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `destinatarios`
+--
+
+INSERT INTO `destinatarios` (`id`, `hoja_ruta_id`, `destinatario`, `informe`, `asista`, `responda`, `ejecute`, `difunda`, `coordine`, `ver_antecedente`, `acelere_tramite`, `para_conocimiento`, `archivo`, `descripcion`, `fecha`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 2, 'ALCALDE', 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 'prueba descripcion', '2023-05-26', 1, '2023-05-26 17:15:15', '2023-05-26 17:15:15'),
+(2, 3, 'ALCALDE', 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 'desc. de prueba 2', '2023-05-26', 1, '2023-05-26 17:17:51', '2023-05-26 17:17:51'),
+(3, 4, 'ALCALDE', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Descripcion 3', '2023-05-26', 1, '2023-05-26 17:19:33', '2023-05-26 17:19:33'),
+(4, 5, 'ALCALDE', 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'desc. hoja 4', '2023-05-26', 1, '2023-05-26 17:20:48', '2023-05-26 17:20:48'),
+(5, 6, 'ALCALDE', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'desc 5', '2023-05-26', 1, '2023-05-26 17:23:27', '2023-05-26 17:23:27'),
+(6, 7, 'ALCALDE', 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 'desc 6', '2023-05-26', 1, '2023-05-26 17:24:18', '2023-05-26 17:24:18');
 
 -- --------------------------------------------------------
 
@@ -96,6 +109,23 @@ CREATE TABLE `historial_accions` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `historial_accions`
+--
+
+INSERT INTO `historial_accions` (`id`, `user_id`, `accion`, `descripcion`, `datos_original`, `datos_nuevo`, `modulo`, `fecha`, `hora`, `created_at`, `updated_at`) VALUES
+(1, 1, 'CREACIÓN', 'EL USUARIO admin REGISTRO UN SLIDER', 'created_at: 2023-05-25 11:52:25<br/>id: 1<br/>imagen: s1685029945.jpg<br/>updated_at: 2023-05-25 11:52:25<br/>', NULL, 'SLIDERS', '2023-05-25', '11:52:25', '2023-05-25 15:52:25', '2023-05-25 15:52:25'),
+(2, 1, 'MODIFICACIÓN', 'EL USUARIO admin MODIFICÓ UN SLIDER', 'created_at: 2023-05-25 11:52:25<br/>id: 1<br/>imagen: s1685029945.jpg<br/>updated_at: 2023-05-25 11:52:25<br/>', 'created_at: 2023-05-25 11:52:25<br/>id: 1<br/>imagen: s1685030319.jpg<br/>updated_at: 2023-05-25 11:58:39<br/>', 'SLIDERS', '2023-05-25', '11:58:39', '2023-05-25 15:58:39', '2023-05-25 15:58:39'),
+(3, 1, 'CREACIÓN', 'EL USUARIO admin REGISTRO UN SLIDER', 'created_at: 2023-05-25 11:58:51<br/>id: 2<br/>imagen: s1685030331.jpg<br/>updated_at: 2023-05-25 11:58:51<br/>', NULL, 'SLIDERS', '2023-05-25', '11:58:51', '2023-05-25 15:58:51', '2023-05-25 15:58:51'),
+(4, 1, 'CREACIÓN', 'EL USUARIO admin REGISTRO UN SLIDER', 'created_at: 2023-05-25 12:04:14<br/>id: 3<br/>imagen: s1685030654.jpg<br/>updated_at: 2023-05-25 12:04:14<br/>', NULL, 'SLIDERS', '2023-05-25', '12:04:14', '2023-05-25 16:04:14', '2023-05-25 16:04:14'),
+(5, 1, 'ELIMINACIÓN', 'EL USUARIO admin ELIMINÓ UN SLIDER', 'created_at: 2023-05-25 12:04:14<br/>id: 3<br/>imagen: s1685030654.jpg<br/>updated_at: 2023-05-25 12:04:14<br/>', NULL, 'SLIDERS', '2023-05-25', '12:05:33', '2023-05-25 16:05:33', '2023-05-25 16:05:33'),
+(6, 1, 'CREACIÓN', 'EL USUARIO admin REGISTRO UNA HOJA DE RUTA', 'id: 2<br/>procedencia: LA PAZ<br/>referencia: REF. DE PRUEBA<br/>fecha_recepcion: 2023-05-26<br/>hora: 13:12<br/>nro_hojas: 1<br/>nro_hoja_ruta: 1<br/>fecha_registro: 2023-05-26<br/>user_id: 1<br/>created_at: 2023-05-26 13:15:15<br/>updated_at: 2023-05-26 13:15:15<br/>', NULL, 'HOJA DE RUTAS', '2023-05-26', '13:15:16', '2023-05-26 17:15:16', '2023-05-26 17:15:16'),
+(7, 1, 'CREACIÓN', 'EL USUARIO admin REGISTRO UNA HOJA DE RUTA', 'id: 3<br/>procedencia: HOJA 2<br/>referencia: REF. 2<br/>fecha_recepcion: 2023-05-26<br/>hora: 13:17<br/>nro_hojas: 2<br/>nro_hoja_ruta: 2<br/>fecha_registro: 2023-05-26<br/>user_id: 1<br/>created_at: 2023-05-26 13:17:51<br/>updated_at: 2023-05-26 13:17:51<br/>', NULL, 'HOJA DE RUTAS', '2023-05-26', '13:17:51', '2023-05-26 17:17:51', '2023-05-26 17:17:51'),
+(8, 1, 'CREACIÓN', 'EL USUARIO admin REGISTRO UNA HOJA DE RUTA', 'id: 4<br/>procedencia: LA PAZ<br/>referencia: REF # 3<br/>fecha_recepcion: 2023-05-27<br/>hora: 08:00<br/>nro_hojas: 3<br/>nro_hoja_ruta: 3<br/>fecha_registro: 2023-05-26<br/>user_id: 1<br/>created_at: 2023-05-26 13:19:33<br/>updated_at: 2023-05-26 13:19:33<br/>', NULL, 'HOJA DE RUTAS', '2023-05-26', '13:19:33', '2023-05-26 17:19:33', '2023-05-26 17:19:33'),
+(9, 1, 'CREACIÓN', 'EL USUARIO admin REGISTRO UNA HOJA DE RUTA', 'id: 5<br/>procedencia: PROC. 4<br/>referencia: REF 4<br/>fecha_recepcion: 2023-05-26<br/>hora: 09:00<br/>nro_hojas: 2<br/>nro_hoja_ruta: 4<br/>fecha_registro: 2023-05-26<br/>user_id: 1<br/>created_at: 2023-05-26 13:20:48<br/>updated_at: 2023-05-26 13:20:48<br/>', NULL, 'HOJA DE RUTAS', '2023-05-26', '13:20:48', '2023-05-26 17:20:48', '2023-05-26 17:20:48'),
+(10, 1, 'CREACIÓN', 'EL USUARIO admin REGISTRO UNA HOJA DE RUTA', 'id: 6<br/>procedencia: PROC. 5<br/>referencia: REF. 5<br/>fecha_recepcion: 2023-05-26<br/>hora: 10:00<br/>nro_hojas: 1<br/>nro_hoja_ruta: 5<br/>fecha_registro: 2023-05-26<br/>user_id: 1<br/>created_at: 2023-05-26 13:23:27<br/>updated_at: 2023-05-26 13:23:27<br/>', NULL, 'HOJA DE RUTAS', '2023-05-26', '13:23:27', '2023-05-26 17:23:27', '2023-05-26 17:23:27'),
+(11, 1, 'CREACIÓN', 'EL USUARIO admin REGISTRO UNA HOJA DE RUTA', 'id: 7<br/>procedencia: PROC. 6<br/>referencia: REF 6.<br/>fecha_recepcion: 2023-05-26<br/>hora: 11:00<br/>nro_hojas: 2<br/>nro_hoja_ruta: 6<br/>fecha_registro: 2023-05-26<br/>user_id: 1<br/>created_at: 2023-05-26 13:24:18<br/>updated_at: 2023-05-26 13:24:18<br/>', NULL, 'HOJA DE RUTAS', '2023-05-26', '13:24:18', '2023-05-26 17:24:18', '2023-05-26 17:24:18');
+
 -- --------------------------------------------------------
 
 --
@@ -111,9 +141,22 @@ CREATE TABLE `hoja_rutas` (
   `nro_hojas` int NOT NULL,
   `nro_hoja_ruta` bigint NOT NULL,
   `fecha_registro` date NOT NULL,
+  `user_id` bigint UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `hoja_rutas`
+--
+
+INSERT INTO `hoja_rutas` (`id`, `procedencia`, `referencia`, `fecha_recepcion`, `hora`, `nro_hojas`, `nro_hoja_ruta`, `fecha_registro`, `user_id`, `created_at`, `updated_at`) VALUES
+(2, 'LA PAZ', 'REF. DE PRUEBA', '2023-05-26', '13:12:00', 1, 1, '2023-05-26', 1, '2023-05-26 17:15:15', '2023-05-26 17:15:15'),
+(3, 'HOJA 2', 'REF. 2', '2023-05-26', '13:17:00', 2, 2, '2023-05-26', 1, '2023-05-26 17:17:51', '2023-05-26 17:17:51'),
+(4, 'LA PAZ', 'REF # 3', '2023-05-27', '08:00:00', 3, 3, '2023-05-26', 1, '2023-05-26 17:19:33', '2023-05-26 17:19:33'),
+(5, 'PROC. 4', 'REF 4', '2023-05-26', '09:00:00', 2, 4, '2023-05-26', 1, '2023-05-26 17:20:48', '2023-05-26 17:20:48'),
+(6, 'PROC. 5', 'REF. 5', '2023-05-26', '10:00:00', 1, 5, '2023-05-26', 1, '2023-05-26 17:23:27', '2023-05-26 17:23:27'),
+(7, 'PROC. 6', 'REF 6.', '2023-05-26', '11:00:00', 2, 6, '2023-05-26', 1, '2023-05-26 17:24:18', '2023-05-26 17:24:18');
 
 -- --------------------------------------------------------
 
@@ -260,6 +303,14 @@ CREATE TABLE `sliders` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `sliders`
+--
+
+INSERT INTO `sliders` (`id`, `imagen`, `created_at`, `updated_at`) VALUES
+(1, 's1685030319.jpg', '2023-05-25 15:52:25', '2023-05-25 15:58:39'),
+(2, 's1685030331.jpg', '2023-05-25 15:58:51', '2023-05-25 15:58:51');
+
 -- --------------------------------------------------------
 
 --
@@ -394,19 +445,19 @@ ALTER TABLE `configuracions`
 -- AUTO_INCREMENT de la tabla `destinatarios`
 --
 ALTER TABLE `destinatarios`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `historial_accions`
 --
 ALTER TABLE `historial_accions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `hoja_rutas`
 --
 ALTER TABLE `hoja_rutas`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
@@ -454,7 +505,7 @@ ALTER TABLE `portal_turismo_deportes`
 -- AUTO_INCREMENT de la tabla `sliders`
 --
 ALTER TABLE `sliders`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
