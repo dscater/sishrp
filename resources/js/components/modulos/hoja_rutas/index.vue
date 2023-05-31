@@ -81,6 +81,61 @@
                                                 empty-filtered-text="Sin resultados"
                                                 :filter="filter"
                                             >
+                                                <template #cell(detalle)="row">
+                                                    <b-button
+                                                        size="sm"
+                                                        variant="primary"
+                                                        @click="
+                                                            row.toggleDetails
+                                                        "
+                                                    >
+                                                        {{
+                                                            row.detailsShowing
+                                                                ? "Ocultar"
+                                                                : "Ver"
+                                                        }}
+                                                        Detalles
+                                                    </b-button>
+                                                </template>
+                                                <template #row-details="row">
+                                                    <b-card>
+                                                        <ul>
+                                                            <li>
+                                                                Informe:  <span><i :class="[row.item.ultimo_destinatario.informe==1?'fa fa-check-square':'far fa-square']"></i></span>
+                                                            </li>
+                                                            <li>
+                                                                Asista:  <span><i :class="[row.item.ultimo_destinatario.asista==1?'fa fa-check-square':'far fa-square']"></i></span>
+                                                            </li>
+                                                            <li>
+                                                                Responda:  <span><i :class="[row.item.ultimo_destinatario.responda==1?'fa fa-check-square':'far fa-square']"></i></span>
+                                                            </li>
+                                                            <li>
+                                                                Ejecute:  <span><i :class="[row.item.ultimo_destinatario.ejecute==1?'fa fa-check-square':'far fa-square']"></i></span>
+                                                            </li>
+                                                            <li>
+                                                                Difunda:  <span><i :class="[row.item.ultimo_destinatario.difunda==1?'fa fa-check-square':'far fa-square']"></i></span>
+                                                            </li>
+                                                            <li>
+                                                                Coordine:  <span><i :class="[row.item.ultimo_destinatario.coordine==1?'fa fa-check-square':'far fa-square']"></i></span>
+                                                            </li>
+                                                            <li>
+                                                                Ver antecedente:  <span><i :class="[row.item.ultimo_destinatario.ver_antecedente==1?'fa fa-check-square':'far fa-square']"></i></span>
+                                                            </li>
+                                                            <li>
+                                                                Acelere trámite:  <span><i :class="[row.item.ultimo_destinatario.acelere_tramite==1?'fa fa-check-square':'far fa-square']"></i></span>
+                                                            </li>
+                                                            <li>
+                                                                Para conocimiento:  <span><i :class="[row.item.ultimo_destinatario.para_conocimiento==1?'fa fa-check-square':'far fa-square']"></i></span>
+                                                            </li>
+                                                            <li>
+                                                                Archivo:  <span><i :class="[row.item.ultimo_destinatario.archivo==1?'fa fa-check-square':'far fa-square']"></i></span>
+                                                            </li>
+                                                        </ul>
+                                                        <strong>Descripción:</strong> <span v-text="row.item.ultimo_destinatario.descripcion"></span><br/>
+                                                        <strong>Fecha:</strong> <span v-text="row.item.ultimo_destinatario.fecha"></span><br/>
+                                                    </b-card>
+                                                </template>
+
                                                 <template
                                                     #cell(fecha_registro)="row"
                                                 >
@@ -96,6 +151,22 @@
                                                     <div
                                                         class="row justify-content-between"
                                                     >
+                                                        <b-button
+                                                            size="sm"
+                                                            pill
+                                                            variant="outline-primary"
+                                                            class="btn-flat btn-block"
+                                                            title="Responder"
+                                                            @click="
+                                                                responderHoja(
+                                                                    row.item
+                                                                )
+                                                            "
+                                                        >
+                                                            <i
+                                                                class="fa fa-file-signature"
+                                                            ></i>
+                                                        </b-button>
                                                         <b-button
                                                             size="sm"
                                                             pill
@@ -122,7 +193,16 @@
                                                                 eliminaHojaRuta(
                                                                     row.item.id,
                                                                     row.item
-                                                                        .hoja_ruta
+                                                                        .nro_hoja_ruta +
+                                                                        ' | ' +
+                                                                        row.item
+                                                                            .procedencia +
+                                                                        ' | ' +
+                                                                        row.item
+                                                                            .referencia +
+                                                                        ' | ' +
+                                                                        row.item
+                                                                            .fecha_recepcion
                                                                 )
                                                             "
                                                         >
@@ -197,11 +277,11 @@ export default {
                 { key: "hora", label: "Hora", sortable: true },
                 { key: "nro_hojas", label: "N° de hojas", sortable: true },
                 {
-                    key: "destinatario",
-                    label: "Detalle destinatario",
+                    key: "ultimo_destinatario.destinatario",
+                    label: "Último destinatario",
                     sortable: true,
                 },
-                { key: "fecha", label: "Fecha", sortable: true },
+                { key: "detalle", label: "Detalle", sortable: true },
                 { key: "accion", label: "Acción" },
             ],
             loading: true,
@@ -235,16 +315,17 @@ export default {
     methods: {
         // Seleccionar Opciones de Tabla
         editarRegistro(item) {
-            this.oHojaRuta.id = item.id;
-            this.oHojaRuta.hoja_ruta = item.hoja_ruta ? item.hoja_ruta : "";
-            this.oHojaRuta.descripcion = item.descripcion
-                ? item.descripcion
-                : "";
-
-            this.modal_accion = "edit";
-            this.muestra_modal = true;
+            this.$router.push({
+                name: "hoja_rutas.edit",
+                params: { id: item.id },
+            });
         },
-
+        responderHoja(item) {
+            this.$router.push({
+                name: "hoja_rutas.responder",
+                params: { id: item.id },
+            });
+        },
         // Listar HojaRutas
         getHojaRutas() {
             this.showOverlay = true;

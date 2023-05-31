@@ -54,7 +54,13 @@ export default new Router({
             component: require("./components/modulos/hoja_rutas/edit.vue")
                 .default,
         },
-
+        {
+            path: "/administracion/hoja_rutas/responder/:id",
+            name: "hoja_rutas.responder",
+            props: true,
+            component: require("./components/modulos/hoja_rutas/responder.vue")
+                .default,
+        },
         // portal_gamy
         {
             path: "/administracion/portal_gamy",

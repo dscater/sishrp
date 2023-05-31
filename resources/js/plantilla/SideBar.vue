@@ -94,7 +94,6 @@
                         v-if="permisos.includes('hoja_rutas.index')"
                     >
                         <router-link
-                            exact
                             :to="{ name: 'hoja_rutas.index' }"
                             class="nav-link"
                             v-loading.fullscreen.lock="fullscreenLoading"
@@ -241,7 +240,7 @@
                             class="nav-link"
                         >
                             <i class="fas fa-file-pdf nav-icon"></i>
-                            <p>Hoja de rutas</p>
+                            <p>Hojas de ruta</p>
                         </router-link>
                     </li>
                     <li class="nav-header bg-navy">OTRAS OPCIONES</li>

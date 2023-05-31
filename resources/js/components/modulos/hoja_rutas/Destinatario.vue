@@ -1,24 +1,37 @@
 <template>
     <div class="row">
         <div class="col-md-12">
-            <div class="card card-primary">
+            <div class="card card-success">
                 <div class="card-header">
-                    <h3 class="text-md">Destinatario {{ nro_destinatario }}</h3>
+                    <h3 class="text-md card-title">
+                        Destinatario {{ nro_destinatario }}
+                    </h3>
+
+                    <div class="card-tools">
+                        <button
+                            v-if="accion == 'responder'"
+                            class="btn btn-danger"
+                            @click="eliminaDestinatario(index)"
+                        >
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </div>
                 </div>
-                <div class="card-body border border-1 border-primary">
+                <div class="card-body border border-1 border-success">
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label>Destinatario*:</label>
                             <el-input
                                 v-model="oDestinatario.destinatario"
                                 :class="{
-                                    'is-invalid': errors.destinatario,
+                                    'is-invalid':
+                                        errors['destinatario' + '.' + index],
                                 }"
                             ></el-input>
                             <span
                                 class="error invalid-feedback"
-                                v-if="errors.destinatario"
-                                v-text="errors.destinatario[0]"
+                                v-if="errors['destinatario' + '.' + index]"
+                                v-text="errors['destinatario' + '.' + index][0]"
                             ></span>
                         </div>
                     </div>
@@ -28,7 +41,8 @@
                                 >Informe
                                 <input
                                     type="checkbox"
-                                    :checked="oDestinatario.informe"
+                                    :true-value="1"
+                                    :false-value="0"
                                     v-model="oDestinatario.informe"
                             /></label>
                         </div>
@@ -37,7 +51,8 @@
                                 >Asista
                                 <input
                                     type="checkbox"
-                                    :checked="oDestinatario.asista"
+                                    :true-value="1"
+                                    :false-value="0"
                                     v-model="oDestinatario.asista"
                             /></label>
                         </div>
@@ -46,7 +61,8 @@
                                 >Responda
                                 <input
                                     type="checkbox"
-                                    :checked="oDestinatario.responda"
+                                    :true-value="1"
+                                    :false-value="0"
                                     v-model="oDestinatario.responda"
                             /></label>
                         </div>
@@ -55,7 +71,8 @@
                                 >Ejecute
                                 <input
                                     type="checkbox"
-                                    :checked="oDestinatario.ejecute"
+                                    :true-value="1"
+                                    :false-value="0"
                                     v-model="oDestinatario.ejecute"
                             /></label>
                         </div>
@@ -64,7 +81,8 @@
                                 >Difunda
                                 <input
                                     type="checkbox"
-                                    :checked="oDestinatario.difunda"
+                                    :true-value="1"
+                                    :false-value="0"
                                     v-model="oDestinatario.difunda"
                             /></label>
                         </div>
@@ -73,7 +91,8 @@
                                 >Coordine
                                 <input
                                     type="checkbox"
-                                    :checked="oDestinatario.coordine"
+                                    :true-value="1"
+                                    :false-value="0"
                                     v-model="oDestinatario.coordine"
                             /></label>
                         </div>
@@ -82,9 +101,8 @@
                                 >Ver antecedente
                                 <input
                                     type="checkbox"
-                                    :checked="
-                                        oDestinatario.ver_antecedente == 1
-                                    "
+                                    :true-value="1"
+                                    :false-value="0"
                                     v-model="oDestinatario.ver_antecedente"
                             /></label>
                         </div>
@@ -93,9 +111,8 @@
                                 >Acelere trámite
                                 <input
                                     type="checkbox"
-                                    :checked="
-                                        oDestinatario.acelere_tramite == 1
-                                    "
+                                    :true-value="1"
+                                    :false-value="0"
                                     v-model="oDestinatario.acelere_tramite"
                             /></label>
                         </div>
@@ -104,9 +121,8 @@
                                 >Para conocimiento
                                 <input
                                     type="checkbox"
-                                    :checked="
-                                        oDestinatario.para_conocimiento == 1
-                                    "
+                                    :true-value="1"
+                                    :false-value="0"
                                     v-model="oDestinatario.para_conocimiento"
                             /></label>
                         </div>
@@ -115,7 +131,8 @@
                                 >Archivo
                                 <input
                                     type="checkbox"
-                                    :checked="oDestinatario.archivo"
+                                    :true-value="1"
+                                    :false-value="0"
                                     v-model="oDestinatario.archivo"
                             /></label>
                         </div>
@@ -128,13 +145,14 @@
                                 autoresize
                                 v-model="oDestinatario.descripcion"
                                 :class="{
-                                    'is-invalid': errors.descripcion,
+                                    'is-invalid':
+                                        errors['descripcion' + '.' + index],
                                 }"
                             ></el-input>
                             <span
                                 class="error invalid-feedback"
-                                v-if="errors.descripcion"
-                                v-text="errors.descripcion[0]"
+                                v-if="errors['descripcion' + '.' + index]"
+                                v-text="errors['descripcion' + '.' + index][0]"
                             ></span>
                         </div>
                         <div class="form-group col-md-4">
@@ -143,14 +161,14 @@
                                 type="date"
                                 v-model="oDestinatario.fecha"
                                 :class="{
-                                    'is-invalid': errors.fecha,
+                                    'is-invalid': errors['fecha' + '.' + index],
                                 }"
                                 class="form-control"
                             />
                             <span
                                 class="error invalid-feedback"
-                                v-if="errors.fecha"
-                                v-text="errors.fecha[0]"
+                                v-if="errors['fecha' + '.' + index]"
+                                v-text="errors['fecha' + '.' + index][0]"
                             ></span>
                         </div>
                     </div>
@@ -182,12 +200,20 @@ export default {
                 fecha: "",
             },
         },
+        index: {
+            type: Number,
+            required: true,
+        },
         nro_destinatario: {
             type: Number,
             required: true,
         },
         form_errors: {
             default: [],
+        },
+        accion: {
+            type: String,
+            default: "nuevo",
         },
     },
     watch: {
@@ -205,11 +231,8 @@ export default {
         };
     },
     methods: {
-        asigna_valor(key) {
-            console.log(key);
-            console.log(this.oDestinatario[key]);
-            this.oDestinatario[key] = this.oDestinatario[key] ? 0 : 1;
-            console.log(this.oDestinatario[key]);
+        eliminaDestinatario(index) {
+            this.$emit("eliminaDestinatario", index);
         },
     },
 };

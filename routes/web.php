@@ -44,6 +44,9 @@ Route::middleware(['auth'])->group(function () {
         ]);
 
         // Hoja de rutas
+        Route::delete("hoja_rutas/elimina_destinatario/{destinatario}", [HojaRutaController::class, 'elimina_destinatario']);
+        Route::put("hoja_rutas/actualiza_destinatario/{destinatario}", [HojaRutaController::class, 'actualiza_destinatario']);
+        Route::post("hoja_rutas/responder/{hoja_ruta}", [HojaRutaController::class, 'responder']);
         Route::resource('hoja_rutas', HojaRutaController::class)->only([
             'index', 'store', 'update', 'destroy', 'show'
         ]);

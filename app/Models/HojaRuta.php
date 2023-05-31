@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class HojaRuta extends Model
 {
@@ -23,6 +24,11 @@ class HojaRuta extends Model
     public function destinatarios()
     {
         return $this->hasMany(Destinatario::class, 'hoja_ruta_id');
+    }
+
+    public function ultimo_destinatario()
+    {
+        return $this->hasOne(Destinatario::class, 'hoja_ruta_id')->latestOfMany("id");
     }
 
     public static function getNroHojaRuta()
