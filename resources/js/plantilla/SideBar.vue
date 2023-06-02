@@ -118,7 +118,7 @@
                     </li><li
                         class="nav-header bg-navy"
                         v-if="
-                            permisos.includes('portal_gamy.index') ||
+                            permisos.includes('portal_gamys.index') ||
                             permisos.includes('sliders.index') ||
                             permisos.includes('portal_noticias.index') ||
                             permisos.includes('portal_convocatorias.index') ||
@@ -129,11 +129,11 @@
                     </li>
                     <li
                         class="nav-item"
-                        v-if="permisos.includes('portal_gamy.index')"
+                        v-if="permisos.includes('portal_gamys.index')"
                     >
                         <router-link
                             exact
-                            :to="{ name: 'portal_gamy.index' }"
+                            :to="{ name: 'portal_gamys.index' }"
                             class="nav-link"
                             v-loading.fullscreen.lock="fullscreenLoading"
                         >

@@ -63,9 +63,9 @@ export default new Router({
         },
         // portal_gamy
         {
-            path: "/administracion/portal_gamy",
-            name: "portal_gamy.index",
-            component: require("./components/modulos/portal_gamy/index.vue")
+            path: "/administracion/portal_gamys",
+            name: "portal_gamys.index",
+            component: require("./components/modulos/portal_gamys/index.vue")
                 .default,
         },
 

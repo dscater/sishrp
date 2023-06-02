@@ -6,6 +6,7 @@ use App\Http\Controllers\HojaRutaController;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PortalActividadController;
+use App\Http\Controllers\PortalController;
 use App\Http\Controllers\PortalConvocatoriaController;
 use App\Http\Controllers\PortalGamyController;
 use App\Http\Controllers\PortalNoticiaController;
@@ -17,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 
 // INICIO
 Route::get('/', [InicioController::class, 'index'])->name("inicio");
+
+// PORTAL
+Route::get("/gamy", [PortalController::class, 'gamy']);
 
 // LOGIN
 Route::get('/login', [LoginController::class, 'index'])->name("login");
@@ -62,7 +66,7 @@ Route::middleware(['auth'])->group(function () {
         ]);
 
         // portal gamy
-        Route::resource('portal_gamy', PortalGamyController::class)->only([
+        Route::resource('portal_gamys', PortalGamyController::class)->only([
             'index', 'store', 'update', 'destroy', 'show'
         ]);
 

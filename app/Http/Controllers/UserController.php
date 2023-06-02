@@ -65,10 +65,10 @@ class UserController extends Controller
             'sliders.edit',
             'sliders.destroy',
 
-            'portal_gamy.index',
-            'portal_gamy.create',
-            'portal_gamy.edit',
-            'portal_gamy.destroy',
+            'portal_gamys.index',
+            'portal_gamys.create',
+            'portal_gamys.edit',
+            'portal_gamys.destroy',
 
             'portal_noticias.index',
             'portal_noticias.create',
