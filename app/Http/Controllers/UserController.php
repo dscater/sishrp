@@ -94,6 +94,7 @@ class UserController extends Controller
             'configuracion.edit',
 
             'reportes.usuarios',
+            'reportes.hoja_rutas',
         ],
         'OPERADOR' => [],
     ];

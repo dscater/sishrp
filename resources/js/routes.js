@@ -103,6 +103,15 @@ export default new Router({
                     .default,
         },
 
+        // portal_turismo_deportes
+        {
+            path: "/administracion/portal_turismo_deportes",
+            name: "portal_turismo_deportes.index",
+            component:
+                require("./components/modulos/portal_turismo_deportes/index.vue")
+                    .default,
+        },
+
         // Configuración
         {
             path: "/administracion/configuracion",
@@ -117,6 +126,13 @@ export default new Router({
             path: "/administracion/reportes/usuarios",
             name: "reportes.usuarios",
             component: require("./components/modulos/reportes/usuarios.vue")
+                .default,
+            props: true,
+        },
+        {
+            path: "/administracion/reportes/hoja_rutas",
+            name: "reportes.hoja_rutas",
+            component: require("./components/modulos/reportes/hoja_rutas.vue")
                 .default,
             props: true,
         },

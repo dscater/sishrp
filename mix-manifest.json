@@ -13,6 +13,10 @@
     "/imgs/fondo_noticias.jpg": "/imgs/fondo_noticias.jpg",
     "/imgs/fondo_turismo.jpg": "/imgs/fondo_turismo.jpg",
     "/imgs/fotogamy.jpg": "/imgs/fotogamy.jpg",
+    "/imgs/gamy/21685725822.jpg": "/imgs/gamy/21685725822.jpg",
+    "/imgs/gamy/21685725876.jpg": "/imgs/gamy/21685725876.jpg",
+    "/imgs/gamy/21685725892.jpeg": "/imgs/gamy/21685725892.jpeg",
+    "/imgs/gamy/21685725892.jpg": "/imgs/gamy/21685725892.jpg",
     "/imgs/gamy.jpeg": "/imgs/gamy.jpeg",
     "/imgs/gamy.png": "/imgs/gamy.png",
     "/imgs/iglesia.jpg": "/imgs/iglesia.jpg",
@@ -46,7 +50,5 @@
     "/webfonts/fa-solid-900.svg": "/webfonts/fa-solid-900.svg",
     "/webfonts/fa-solid-900.ttf": "/webfonts/fa-solid-900.ttf",
     "/webfonts/fa-solid-900.woff": "/webfonts/fa-solid-900.woff",
-    "/webfonts/fa-solid-900.woff2": "/webfonts/fa-solid-900.woff2",
-    "/imgs/gamy/21685725599.jpg": "/imgs/gamy/21685725599.jpg",
-    "/imgs/gamy/21685725822.jpg": "/imgs/gamy/21685725822.jpg"
+    "/webfonts/fa-solid-900.woff2": "/webfonts/fa-solid-900.woff2"
 }

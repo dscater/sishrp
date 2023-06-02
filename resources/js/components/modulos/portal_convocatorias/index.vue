@@ -4,7 +4,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Marca de vehículos</h1>
+                        <h1>Portal - Convocatorias</h1>
                     </div>
                 </div>
             </div>
@@ -20,13 +20,13 @@
                                         <button
                                             v-if="
                                                 permisos.includes(
-                                                    'marcas.create'
+                                                    'portal_convocatorias.create'
                                                 )
                                             "
                                             class="btn btn-primary btn-flat btn-block"
                                             @click="
                                                 abreModal('nuevo');
-                                                limpiaMarca();
+                                                limpiaPortalConvocatoria();
                                             "
                                         >
                                             <i class="fa fa-plus"></i>
@@ -84,6 +84,39 @@
                                                 empty-filtered-text="Sin resultados"
                                                 :filter="filter"
                                             >
+                                                <template #cell(archivo)="row">
+                                                    <template
+                                                        v-if="
+                                                            row.item.archivo &&
+                                                            row.item.archivo !=
+                                                                ''
+                                                        "
+                                                    >
+                                                        <img
+                                                            v-if="
+                                                                row.item.tipo ==
+                                                                'IMAGEN'
+                                                            "
+                                                            :src="
+                                                                row.item
+                                                                    .url_archivo
+                                                            "
+                                                            width="200px"
+                                                        />
+                                                        <a
+                                                            v-else
+                                                            :href="
+                                                                row.item
+                                                                    .url_archivo
+                                                            "
+                                                            target="_blank"
+                                                            >Descargar</a
+                                                        >
+                                                    </template>
+                                                    <span v-else
+                                                        >Sin archivos</span
+                                                    >
+                                                </template>
                                                 <template
                                                     #cell(fecha_registro)="row"
                                                 >
@@ -122,10 +155,10 @@
                                                             class="btn-flat btn-block"
                                                             title="Eliminar registro"
                                                             @click="
-                                                                eliminaMarca(
+                                                                eliminaPortalConvocatoria(
                                                                     row.item.id,
                                                                     row.item
-                                                                        .marca
+                                                                        .titulo
                                                                 )
                                                             "
                                                         >
@@ -176,9 +209,9 @@
         <Nuevo
             :muestra_modal="muestra_modal"
             :accion="modal_accion"
-            :marca="oMarca"
+            :portal_convocatoria="oPortalConvocatoria"
             @close="muestra_modal = false"
-            @envioModal="getMarcas"
+            @envioModal="getPortalConvocatorias"
         ></Nuevo>
     </div>
 </template>
@@ -196,8 +229,9 @@ export default {
             listRegistros: [],
             showOverlay: false,
             fields: [
-                { key: "marca", label: "Marca", sortable: true },
+                { key: "titulo", label: "Título", sortable: true },
                 { key: "descripcion", label: "Descripción", sortable: true },
+                { key: "archivo", label: "Foto/Archivo", sortable: true },
                 { key: "accion", label: "Acción" },
             ],
             loading: true,
@@ -207,10 +241,12 @@ export default {
             }),
             muestra_modal: false,
             modal_accion: "nuevo",
-            oMarca: {
+            oPortalConvocatoria: {
                 id: 0,
-                marca: "",
+                titulo: "",
                 descripcion: "",
+                archivo: null,
+                tipo: "",
             },
             currentPage: 1,
             perPage: 5,
@@ -228,26 +264,26 @@ export default {
     },
     mounted() {
         this.loadingWindow.close();
-        this.getMarcas();
+        this.getPortalConvocatorias();
     },
     methods: {
         // Seleccionar Opciones de Tabla
         editarRegistro(item) {
-            this.oMarca.id = item.id;
-            this.oMarca.marca = item.marca ? item.marca : "";
-            this.oMarca.descripcion = item.descripcion
-                ? item.descripcion
-                : "";
+            this.oPortalConvocatoria.id = item.id;
+            this.oPortalConvocatoria.titulo = item.titulo;
+            this.oPortalConvocatoria.descripcion = item.descripcion;
+            this.oPortalConvocatoria.archivo = item.archivo;
+            this.oPortalConvocatoria.tipo = item.tipo;
 
             this.modal_accion = "edit";
             this.muestra_modal = true;
         },
 
-        // Listar Marcas
-        getMarcas() {
+        // Listar PortalConvocatorias
+        getPortalConvocatorias() {
             this.showOverlay = true;
             this.muestra_modal = false;
-            let url = "/admin/marcas";
+            let url = "/admin/portal_convocatorias";
             if (this.pagina != 0) {
                 url += "?page=" + this.pagina;
             }
@@ -257,11 +293,11 @@ export default {
                 })
                 .then((res) => {
                     this.showOverlay = false;
-                    this.listRegistros = res.data.marcas;
+                    this.listRegistros = res.data.portal_convocatorias;
                     this.totalRows = res.data.total;
                 });
         },
-        eliminaMarca(id, descripcion) {
+        eliminaPortalConvocatoria(id, descripcion) {
             Swal.fire({
                 title: "¿Quierés eliminar este registro?",
                 html: `<strong>${descripcion}</strong>`,
@@ -274,11 +310,11 @@ export default {
                 /* Read more about isConfirmed, isDenied below */
                 if (result.isConfirmed) {
                     axios
-                        .post("/admin/marcas/" + id, {
+                        .post("/admin/portal_convocatorias/" + id, {
                             _method: "DELETE",
                         })
                         .then((res) => {
-                            this.getMarcas();
+                            this.getPortalConvocatorias();
                             this.filter = "";
                             Swal.fire({
                                 icon: "success",
@@ -313,11 +349,11 @@ export default {
                 }
             });
         },
-        abreModal(tipo_accion = "nuevo", marca = null) {
+        abreModal(tipo_accion = "nuevo", portal_convocatoria = null) {
             this.muestra_modal = true;
             this.modal_accion = tipo_accion;
-            if (marca) {
-                this.oMarca = marca;
+            if (portal_convocatoria) {
+                this.oPortalConvocatoria = portal_convocatoria;
             }
         },
         onFiltered(filteredItems) {
@@ -325,9 +361,11 @@ export default {
             this.totalRows = filteredItems.length;
             this.currentPage = 1;
         },
-        limpiaMarca() {
-            this.oMarca.marca = "";
-            this.oMarca.descripcion = "";
+        limpiaPortalConvocatoria() {
+            this.oPortalConvocatoria.titulo = "";
+            this.oPortalConvocatoria.descripcion = "";
+            this.oPortalConvocatoria.archivo = null;
+            this.oPortalConvocatoria.tipo = "";
         },
         formatoFecha(date) {
             return this.$moment(String(date)).format("DD/MM/YYYY");

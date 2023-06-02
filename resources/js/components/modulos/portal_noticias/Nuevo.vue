@@ -26,21 +26,23 @@
                             <div class="form-group col-md-6">
                                 <label
                                     :class="{
-                                        'text-danger': errors.marca,
+                                        'text-danger': errors.titulo,
                                     }"
-                                    >Marca*</label
+                                    >Título*</label
                                 >
                                 <el-input
-                                    placeholder="Marca"
-                                    :class="{ 'is-invalid': errors.marca }"
-                                    v-model="marca.marca"
+                                    placeholder="Título"
+                                    :class="{
+                                        'is-invalid': errors.titulo,
+                                    }"
+                                    v-model="portal_noticia.titulo"
                                     clearable
                                 >
                                 </el-input>
                                 <span
                                     class="error invalid-feedback"
-                                    v-if="errors.marca"
-                                    v-text="errors.marca[0]"
+                                    v-if="errors.titulo"
+                                    v-text="errors.titulo[0]"
                                 ></span>
                             </div>
                             <div class="form-group col-md-6">
@@ -57,7 +59,7 @@
                                     :class="{
                                         'is-invalid': errors.descripcion,
                                     }"
-                                    v-model="marca.descripcion"
+                                    v-model="portal_noticia.descripcion"
                                     clearable
                                 >
                                 </el-input>
@@ -65,6 +67,28 @@
                                     class="error invalid-feedback"
                                     v-if="errors.descripcion"
                                     v-text="errors.descripcion[0]"
+                                ></span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label
+                                    :class="{
+                                        'text-danger': errors.archivo,
+                                    }"
+                                    >Archivo</label
+                                >
+                                <input
+                                    type="file"
+                                    class="form-control"
+                                    :class="{
+                                        'is-invalid': errors.archivo,
+                                    }"
+                                    ref="input_file"
+                                    @change="cargaArchivo"
+                                />
+                                <span
+                                    class="error invalid-feedback"
+                                    v-if="errors.archivo"
+                                    v-text="errors.archivo[0]"
                                 ></span>
                             </div>
                         </div>
@@ -103,12 +127,14 @@ export default {
             type: String,
             default: "nuevo",
         },
-        marca: {
+        portal_noticia: {
             type: Object,
             default: {
                 id: 0,
-                marca: "",
+                titulo: "",
                 descripcion: "",
+                archivo: "",
+                tipo: "",
             },
         },
     },
@@ -116,6 +142,7 @@ export default {
         muestra_modal: function (newVal, oldVal) {
             this.errors = [];
             if (newVal) {
+                this.$refs.input_file.value = "";
                 this.bModal = true;
             } else {
                 this.bModal = false;
@@ -150,11 +177,15 @@ export default {
         this.bModal = this.muestra_modal;
     },
     methods: {
+        cargaArchivo(e) {
+            this.portal_noticia.archivo = null;
+            this.portal_noticia.archivo = e.target.files[0];
+        },
         setRegistroModal() {
             this.enviando = true;
             try {
                 this.textoBtn = "Enviando...";
-                let url = "/admin/marcas";
+                let url = "/admin/portal_noticias";
                 let config = {
                     headers: {
                         "Content-Type": "multipart/form-data",
@@ -162,18 +193,34 @@ export default {
                 };
                 let formdata = new FormData();
                 formdata.append(
-                    "marca",
-                    this.marca.marca ? this.marca.marca : ""
+                    "portal_noticia",
+                    this.portal_noticia.portal_noticia
+                        ? this.portal_noticia.portal_noticia
+                        : ""
+                );
+                formdata.append(
+                    "titulo",
+                    this.portal_noticia.titulo ? this.portal_noticia.titulo : ""
                 );
                 formdata.append(
                     "descripcion",
-                    this.marca.descripcion
-                        ? this.marca.descripcion
+                    this.portal_noticia.descripcion
+                        ? this.portal_noticia.descripcion
                         : ""
+                );
+                formdata.append(
+                    "archivo",
+                    this.portal_noticia.archivo
+                        ? this.portal_noticia.archivo
+                        : ""
+                );
+                formdata.append(
+                    "tipo",
+                    this.portal_noticia.tipo ? this.portal_noticia.tipo : ""
                 );
 
                 if (this.accion == "edit") {
-                    url = "/admin/marcas/" + this.marca.id;
+                    url = "/admin/portal_noticias/" + this.portal_noticia.id;
                     formdata.append("_method", "PUT");
                 }
                 axios
@@ -187,7 +234,7 @@ export default {
                                 showConfirmButton: false,
                                 timer: 1500,
                             });
-                            this.limpiaMarca();
+                            this.limpiaPortalNoticia();
                             this.$emit("envioModal");
                             this.errors = [];
                             if (this.accion == "edit") {
@@ -244,10 +291,10 @@ export default {
             this.bModal = false;
             this.$emit("close");
         },
-        limpiaMarca() {
+        limpiaPortalNoticia() {
             this.errors = [];
-            this.marca.marca = "";
-            this.marca.descripcion = "";
+            this.portal_noticia.portal_noticia = "";
+            this.portal_noticia.descripcion = "";
         },
     },
 };

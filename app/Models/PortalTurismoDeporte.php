@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class PortalTurismoDeporte extends Model
 {
     use HasFactory;
+
+    protected $fillable = ["link_turismo", "link_deportes"];
 }

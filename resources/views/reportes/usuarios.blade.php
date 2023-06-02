@@ -146,7 +146,7 @@
         }
 
         .green {
-            background: #A93226;
+            background: #2E86C1;
             color: white;
         }
 

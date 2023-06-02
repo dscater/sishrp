@@ -33,7 +33,7 @@
     </style>
 @endsection
 @section('content')
-    <div id="myCarousel" class="carousel slide d-block" data-ride="carousel">
+    <div id="myCarousel" class="carousel slide d-block componente_inicial" data-ride="carousel">
         @if (count($sliders) > 0)
             <!-- Indicadores desde la BD -->
             <ol class="carousel-indicators">
@@ -175,6 +175,5 @@
                 </div>
             </div>
         </div>
-        @include('portal.contactos')
     </div>
 @endsection

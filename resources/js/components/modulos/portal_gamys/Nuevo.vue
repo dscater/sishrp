@@ -143,7 +143,9 @@
                                         'is-invalid': errors.img_historia,
                                     }"
                                     ref="file_historia"
-                                    @change="cargaImagen('img_historia', $event)"
+                                    @change="
+                                        cargaImagen('img_historia', $event)
+                                    "
                                 />
                                 <span
                                     class="error invalid-feedback"
@@ -239,11 +241,8 @@ export default {
     },
     methods: {
         cargaImagen(key, event) {
-            console.log(event);
-            console.log(key);
-            console.log(this.portal_gamy[key]);
+            this.portal_gamy[key] = null;
             this.portal_gamy[key] = event.target.files[0];
-            console.log(this.portal_gamy[key]);
         },
         setRegistroModal() {
             this.enviando = true;

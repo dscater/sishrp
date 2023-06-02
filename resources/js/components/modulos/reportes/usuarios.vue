@@ -187,7 +187,7 @@ export default {
                 "Tipo de usuario",
                 // "Rango de fechas",
             ],
-            listTipos: ["ADMINISTRADOR", "MECÁNICO"],
+            listTipos: ["SUPER USUARIO", "OPERADOR"],
             errors: [],
         };
     },

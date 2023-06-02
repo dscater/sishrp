@@ -28,10 +28,13 @@
             align-items: center;
         }
 
+        .componente_inicial {
+            margin-top: 79.8px!important;
+        }
+
         #myCarousel {
             position: relative;
             height: 50vh;
-            margin-top: 74.8px;
         }
 
         .carousel-inner {
@@ -101,7 +104,7 @@
         .loader {
             position: fixed;
             display: flex;
-            top:0;
+            top: 0;
             left: 0;
             background: rgba(0, 0, 0, 0.619);
             justify-content: center;
@@ -154,7 +157,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto bg-success text-md">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Inicio</a>
+                        <a class="nav-link active" href="{{route('inicio')}}">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('gamy') }}">Gamy</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Noticias</a>
@@ -173,6 +179,7 @@
         </nav>
         @yield('content')
     </div>
+    @include('portal.contactos')
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/plantilla.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>

@@ -185,11 +185,11 @@
                     </li>
                     <li
                         class="nav-item"
-                        v-if="permisos.includes('portal_convocatorias.index')"
+                        v-if="permisos.includes('portal_turismo_deportes.index')"
                     >
                         <router-link
                             exact
-                            :to="{ name: 'portal_convocatorias.index' }"
+                            :to="{ name: 'portal_turismo_deportes.index' }"
                             class="nav-link"
                             v-loading.fullscreen.lock="fullscreenLoading"
                         >
@@ -214,7 +214,8 @@
                     <li
                         class="nav-header bg-navy"
                         v-if="
-                            permisos.includes('reportes.usuarios')
+                            permisos.includes('reportes.usuarios')||
+                            permisos.includes('reportes.hoja_rutas')
                         "
                     >
                         REPORTES
@@ -233,10 +234,10 @@
                     </li>
                     <li
                         class="nav-item"
-                        v-if="permisos.includes('reportes.usuarios')"
+                        v-if="permisos.includes('reportes.hoja_rutas')"
                     >
                         <router-link
-                            :to="{ name: 'reportes.usuarios' }"
+                            :to="{ name: 'reportes.hoja_rutas' }"
                             class="nav-link"
                         >
                             <i class="fas fa-file-pdf nav-icon"></i>

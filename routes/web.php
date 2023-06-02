@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [InicioController::class, 'index'])->name("inicio");
 
 // PORTAL
-Route::get("/gamy", [PortalController::class, 'gamy']);
+Route::get("/gamy", [PortalController::class, 'gamy'])->name("gamy");
 
 // LOGIN
 Route::get('/login', [LoginController::class, 'index'])->name("login");
@@ -92,6 +92,7 @@ Route::middleware(['auth'])->group(function () {
 
         // REPORTES
         Route::post('reportes/usuarios', [ReporteController::class, 'usuarios']);
+        Route::post('reportes/hoja_rutas', [ReporteController::class, 'hoja_rutas']);
     });
 });
 
