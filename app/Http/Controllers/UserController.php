@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\CaracteristicaVehiculo;
 use App\Models\HistorialAccion;
+use App\Models\PortalActividad;
+use App\Models\PortalConvocatoria;
+use App\Models\PortalNoticia;
 use App\Models\Venta;
 use App\Models\Producto;
 use App\Models\User;
@@ -21,7 +24,7 @@ class UserController extends Controller
         'paterno' => 'required|min:4',
         'ci' => 'required|numeric|digits_between:4, 20|unique:users,ci',
         'ci_exp' => 'required',
-        'correo' => 'required|email|unique:users,correo',
+        'correo' => 'nullable|email',
         'dir' => 'required|min:4',
         'fono' => 'required|min:1',
         'tipo' => 'required',
@@ -89,14 +92,36 @@ class UserController extends Controller
             'portal_turismo_deportes.create',
             'portal_turismo_deportes.edit',
             'portal_turismo_deportes.destroy',
-            
+
             'configuracion.index',
             'configuracion.edit',
 
             'reportes.usuarios',
             'reportes.hoja_rutas',
         ],
-        'OPERADOR' => [],
+        'OPERADOR' => [
+            'hoja_rutas.index',
+            'hoja_rutas.create',
+            'hoja_rutas.edit',
+            'hoja_rutas.destroy',
+
+            'portal_noticias.index',
+            'portal_noticias.create',
+            'portal_noticias.edit',
+            'portal_noticias.destroy',
+
+            'portal_convocatorias.index',
+            'portal_convocatorias.create',
+            'portal_convocatorias.edit',
+            'portal_convocatorias.destroy',
+
+            'portal_actividads.index',
+            'portal_actividads.create',
+            'portal_actividads.edit',
+            'portal_actividads.destroy',
+
+            'reportes.hoja_rutas',
+        ],
     ];
 
 
@@ -113,12 +138,20 @@ class UserController extends Controller
         }
 
         $request->validate($this->validacion, $this->mensajes);
+        $cont = 0;
+        do {
+            $nombre_usuario = User::getNombreUsuario($request->nombre, $request->paterno);
+            if ($cont > 0) {
+                $nombre_usuario = $nombre_usuario . $cont;
+            }
+            $request['usuario'] = $nombre_usuario;
+            $cont++;
+        } while (User::where('usuario', $nombre_usuario)->get()->first());
         $request['password'] = 'NoNulo';
         $request['fecha_registro'] = date('Y-m-d');
         DB::beginTransaction();
         try {
             // crear el Usuario
-            $request["usuario"] = mb_strtolower($request->correo);
             $nuevo_usuario = User::create(array_map('mb_strtoupper', $request->except('foto')));
             $nuevo_usuario->password = Hash::make($request->ci);
             $nuevo_usuario->save();
@@ -130,7 +163,6 @@ class UserController extends Controller
                 $file->move(public_path() . '/imgs/users/', $nom_foto);
             }
             $nuevo_usuario->correo = mb_strtolower($nuevo_usuario->correo);
-            $nuevo_usuario->usuario = mb_strtolower($nuevo_usuario->correo);
             $nuevo_usuario->save();
 
             $datos_original = HistorialAccion::getDetalleRegistro($nuevo_usuario, "users");
@@ -162,7 +194,6 @@ class UserController extends Controller
     public function update(Request $request, User $usuario)
     {
         $this->validacion['ci'] = 'required|min:4|numeric|unique:users,ci,' . $usuario->id;
-        $this->validacion['correo'] = 'required|email|unique:users,correo,' . $usuario->id;
         if ($request->hasFile('foto')) {
             $this->validacion['foto'] = 'image|mimes:jpeg,jpg,png|max:2048';
         }
@@ -190,7 +221,6 @@ class UserController extends Controller
                 $file->move(public_path() . '/imgs/users/', $nom_foto);
             }
             $usuario->correo = mb_strtolower($usuario->correo);
-            $usuario->usuario = mb_strtolower($usuario->correo);
             $usuario->save();
 
             $datos_nuevo = HistorialAccion::getDetalleRegistro($usuario, "users");
@@ -345,6 +375,33 @@ class UserController extends Controller
                 'cantidad' => count(User::where('id', '!=', 1)->where("tipo", "!=", "VISITANTE")->get()),
                 'color' => 'bg-info',
                 'icon' => 'fas fa-users',
+            ];
+        }
+
+        if (in_array('portal_noticias.index', $this->permisos[$tipo])) {
+            $array_infos[] = [
+                'label' => 'Noticias',
+                'cantidad' => count(PortalNoticia::all()),
+                'color' => 'bg-primary',
+                'icon' => 'fas fa-newspaper',
+            ];
+        }
+
+        if (in_array('portal_convocatorias.index', $this->permisos[$tipo])) {
+            $array_infos[] = [
+                'label' => 'Convocatorias',
+                'cantidad' => count(PortalConvocatoria::all()),
+                'color' => 'bg-success',
+                'icon' => 'fas fa-list',
+            ];
+        }
+
+        if (in_array('portal_actividads.index', $this->permisos[$tipo])) {
+            $array_infos[] = [
+                'label' => 'Actividades',
+                'cantidad' => count(PortalActividad::all()),
+                'color' => 'bg-warning',
+                'icon' => 'fas fa-list-alt',
             ];
         }
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 02-06-2023 a las 22:20:01
+-- Tiempo de generación: 03-06-2023 a las 19:22:59
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 7.4.19
 
@@ -86,9 +86,10 @@ INSERT INTO `destinatarios` (`id`, `hoja_ruta_id`, `destinatario`, `informe`, `a
 (2, 3, 'ALCALDE', 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 'desc. de prueba 2', '2023-05-26', 1, '2023-05-26 17:17:51', '2023-05-26 17:17:51'),
 (3, 4, 'ALCALDE', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Descripcion 3', '2023-05-26', 1, '2023-05-26 17:19:33', '2023-05-26 17:19:33'),
 (4, 5, 'ALCALDE', 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'desc. hoja 4', '2023-05-26', 1, '2023-05-26 17:20:48', '2023-05-26 17:20:48'),
-(5, 6, 'ALCALDE', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'desc 5', '2023-05-26', 1, '2023-05-26 17:23:27', '2023-05-26 17:23:27'),
+(5, 6, 'ALCALDE', 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 'DESC 5', '2023-05-26', 1, '2023-05-26 17:23:27', '2023-06-03 18:54:35'),
 (7, 2, 'SECRETARIA MUNICIPAL ADMINISTRATIVA', 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 'DESC, DEST, # 2. PRUEBA 2 MODIFICACI´NO', '2023-05-31', 1, '2023-05-31 17:25:24', '2023-05-31 20:15:30'),
-(9, 3, 'SECRETARIA MUNICIPAL ADMINISTRATIVA', 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 'DESC', '2023-05-31', 1, '2023-05-31 17:57:25', '2023-05-31 17:57:25');
+(9, 3, 'SECRETARIA MUNICIPAL ADMINISTRATIVA', 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 'DESC', '2023-05-31', 1, '2023-05-31 17:57:25', '2023-05-31 17:57:25'),
+(10, 6, 'SECRETARIA MUNICIPAL ADMINISTRATIVA', 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 'DESC SECRETARIA MUNICIPAL', '2023-06-03', 1, '2023-06-03 18:55:11', '2023-06-03 18:55:11');
 
 -- --------------------------------------------------------
 
@@ -196,7 +197,21 @@ INSERT INTO `historial_accions` (`id`, `user_id`, `accion`, `descripcion`, `dato
 (78, 1, 'MODIFICACIÓN', 'EL USUARIO admin MODIFICÓ EL LINK DE TURISMO Y DEPORTES', 'id: 1<br/>link_turismo: https://www.google.com/<br/>link_deportes: https://www.google.com/<br/>created_at: <br/>updated_at: 2023-06-02 17:04:11<br/>', 'id: 1<br/>link_turismo: https://www.google.com/asd<br/>link_deportes: https://www.google.com/<br/>created_at: <br/>updated_at: 2023-06-02 17:04:18<br/>', 'TURISMO Y DEPORTES', '2023-06-02', '17:04:18', '2023-06-02 21:04:18', '2023-06-02 21:04:18'),
 (79, 1, 'MODIFICACIÓN', 'EL USUARIO admin MODIFICÓ EL LINK DE TURISMO Y DEPORTES', 'id: 1<br/>link_turismo: https://www.google.com/asd<br/>link_deportes: https://www.google.com/<br/>created_at: <br/>updated_at: 2023-06-02 17:04:18<br/>', 'id: 1<br/>link_turismo: https://www.google.com/<br/>link_deportes: https://www.google.com/<br/>created_at: <br/>updated_at: 2023-06-02 17:04:24<br/>', 'TURISMO Y DEPORTES', '2023-06-02', '17:04:24', '2023-06-02 21:04:24', '2023-06-02 21:04:24'),
 (80, 1, 'CREACIÓN', 'EL USUARIO admin REGISTRO UN USUARIO', 'id: 2<br/>usuario: juan@gmail.com<br/>nombre: JUAN<br/>paterno: PERES<br/>materno: MAMANI<br/>ci: 1111<br/>ci_exp: LP<br/>dir: LOS OLIVOS<br/>correo: juan@gmail.com<br/>fono: 7777777<br/>tipo: OPERADOR<br/>foto: default.png<br/>password: $2y$10$VlZ5rT5ZoI2k7jATBNhGr.C35GUBxwY.3/TyQfPabzaBOLq3whilu<br/>acceso: 1<br/>fecha_registro: 2023-06-02<br/>created_at: 2023-06-02 17:07:37<br/>updated_at: 2023-06-02 17:07:37<br/>', NULL, 'USUARIOS', '2023-06-02', '17:07:37', '2023-06-02 21:07:37', '2023-06-02 21:07:37'),
-(81, 1, 'CREACIÓN', 'EL USUARIO admin REGISTRO UN USUARIO', 'id: 3<br/>usuario: jose@gmail.com<br/>nombre: JOSE<br/>paterno: GONZALES<br/>materno: MAMANI<br/>ci: 2222<br/>ci_exp: LP<br/>dir: LOS OLIVOS<br/>correo: jose@gmail.com<br/>fono: 666666<br/>tipo: SUPER USUARIO<br/>foto: default.png<br/>password: $2y$10$0oYix1YY4S40B333goO83.UeFqhm1YVQHWfc.OsX57qwhguWbPiDa<br/>acceso: 1<br/>fecha_registro: 2023-06-02<br/>created_at: 2023-06-02 17:08:06<br/>updated_at: 2023-06-02 17:08:06<br/>', NULL, 'USUARIOS', '2023-06-02', '17:08:06', '2023-06-02 21:08:06', '2023-06-02 21:08:06');
+(81, 1, 'CREACIÓN', 'EL USUARIO admin REGISTRO UN USUARIO', 'id: 3<br/>usuario: jose@gmail.com<br/>nombre: JOSE<br/>paterno: GONZALES<br/>materno: MAMANI<br/>ci: 2222<br/>ci_exp: LP<br/>dir: LOS OLIVOS<br/>correo: jose@gmail.com<br/>fono: 666666<br/>tipo: SUPER USUARIO<br/>foto: default.png<br/>password: $2y$10$0oYix1YY4S40B333goO83.UeFqhm1YVQHWfc.OsX57qwhguWbPiDa<br/>acceso: 1<br/>fecha_registro: 2023-06-02<br/>created_at: 2023-06-02 17:08:06<br/>updated_at: 2023-06-02 17:08:06<br/>', NULL, 'USUARIOS', '2023-06-02', '17:08:06', '2023-06-02 21:08:06', '2023-06-02 21:08:06'),
+(82, 1, 'MODIFICACIÓN', 'EL USUARIO admin MODIFICÓ UN DESTINATARIO DE UNA HOJA DE RUTA', 'acelere_tramite: 0<br/>archivo: 0<br/>asista: 0<br/>coordine: 0<br/>created_at: 2023-05-26 13:23:27<br/>descripcion: desc 5<br/>destinatario: ALCALDE<br/>difunda: 0<br/>ejecute: 0<br/>fecha: 2023-05-26<br/>hoja_ruta_id: 6<br/>id: 5<br/>informe: 0<br/>para_conocimiento: 0<br/>responda: 0<br/>updated_at: 2023-05-26 13:23:27<br/>user_id: 1<br/>ver_antecedente: 0<br/>', 'acelere_tramite: 0<br/>archivo: 0<br/>asista: 0<br/>coordine: 0<br/>created_at: 2023-05-26 13:23:27<br/>descripcion: DESC 5<br/>destinatario: ALCALDE<br/>difunda: 0<br/>ejecute: 1<br/>fecha: 2023-05-26<br/>hoja_ruta_id: 6<br/>id: 5<br/>informe: 1<br/>para_conocimiento: 0<br/>responda: 0<br/>updated_at: 2023-06-03 14:54:35<br/>user_id: 1<br/>ver_antecedente: 0<br/>', 'DESTINATARIOS', '2023-06-03', '14:54:35', '2023-06-03 18:54:35', '2023-06-03 18:54:35'),
+(83, 1, 'CREACIÓN', 'EL USUARIO admin REGISTRO UN DESTINATARIO EN UNA HOJA DE RUTA', 'acelere_tramite: 1<br/>archivo: 0<br/>asista: 0<br/>coordine: 0<br/>created_at: 2023-06-03 14:55:11<br/>descripcion: DESC SECRETARIA MUNICIPAL<br/>destinatario: SECRETARIA MUNICIPAL ADMINISTRATIVA<br/>difunda: 1<br/>ejecute: 0<br/>fecha: 2023-06-03<br/>hoja_ruta_id: 6<br/>id: 10<br/>informe: 0<br/>para_conocimiento: 0<br/>responda: 0<br/>updated_at: 2023-06-03 14:55:11<br/>user_id: 1<br/>ver_antecedente: 0<br/>', NULL, 'HOJA DE RUTAS', '2023-06-03', '14:55:11', '2023-06-03 18:55:11', '2023-06-03 18:55:11'),
+(84, 1, 'MODIFICACIÓN', 'EL USUARIO admin MODIFICÓ EL PORTAL GAMY', '', '', 'PORTAL GAMY', '2023-06-03', '14:57:19', '2023-06-03 18:57:19', '2023-06-03 18:57:19'),
+(85, 1, 'MODIFICACIÓN', 'EL USUARIO admin MODIFICÓ UNA NOTICIA', 'archivo: 11685738181.docx<br/>created_at: 2023-06-02 16:32:57<br/>descripcion: DESCRIPCION DE LA NOTICIA<br/>fecha_registro: 2023-06-02<br/>id: 1<br/>tipo: ARCHIVO<br/>titulo: NOTICIA 1<br/>updated_at: 2023-06-02 16:36:21<br/>', 'archivo: 11685738181.docx<br/>created_at: 2023-06-02 16:32:57<br/>descripcion: IT IS A LONG ESTABLISHED FACT THAT A READER WILL BE DISTRACTED BY THE READABLE CONTENT OF A PAGE WHEN LOOKING AT ITS LAYOUT. THE POINT OF USING LOREM IPSUM IS THAT IT HAS A MORE-OR-LESS NORMAL DISTRIBUTION OF LETTERS, AS OPPOSED TO USING<br/>fecha_registro: 2023-06-02<br/>id: 1<br/>tipo: ARCHIVO<br/>titulo: NOTICIA 1<br/>updated_at: 2023-06-03 14:58:02<br/>', 'NOTICIAS', '2023-06-03', '14:58:02', '2023-06-03 18:58:02', '2023-06-03 18:58:02'),
+(86, 1, 'MODIFICACIÓN', 'EL USUARIO admin MODIFICÓ UNA NOTICIA', 'archivo: 21685738254.jpg<br/>created_at: 2023-06-02 16:37:34<br/>descripcion: DESCRIPCION NOTICIA 2<br/>fecha_registro: 2023-06-02<br/>id: 2<br/>tipo: IMAGEN<br/>titulo: NOTICIA2<br/>updated_at: 2023-06-02 16:37:34<br/>', 'archivo: 21685738254.jpg<br/>created_at: 2023-06-02 16:37:34<br/>descripcion: THERE ARE MANY VARIATIONS OF PASSAGES OF LOREM IPSUM AVAILABLE, BUT THE MAJORITY HAVE SUFFERED ALTERATION IN SOME FORM, BY INJECTED HUMOUR, OR RANDOMISED WORDS WHICH DON\'T LOOK EVEN SLIGHTLY BELIEVABLE.<br/>fecha_registro: 2023-06-02<br/>id: 2<br/>tipo: IMAGEN<br/>titulo: NOTICIA2<br/>updated_at: 2023-06-03 14:58:21<br/>', 'NOTICIAS', '2023-06-03', '14:58:21', '2023-06-03 18:58:21', '2023-06-03 18:58:21'),
+(87, 1, 'MODIFICACIÓN', 'EL USUARIO admin MODIFICÓ UNA CONVOCATORIA', 'archivo: 11685738630.pdf<br/>created_at: 2023-06-02 16:43:50<br/>descripcion: DESC CONVOCATORIA<br/>fecha_registro: 2023-06-02<br/>id: 1<br/>tipo: ARCHIVO<br/>titulo: CONVOCATORIA 1<br/>updated_at: 2023-06-02 16:43:50<br/>', 'archivo: 11685738630.pdf<br/>created_at: 2023-06-02 16:43:50<br/>descripcion: THERE ARE MANY VARIATIONS OF PASSAGES OF LOREM IPSUM AVAILABLE, BUT THE MAJORITY HAVE SUFFERED ALTERATION IN SOME FORM, BY INJECTED HUMOUR, OR RANDOMISED WORDS WHICH DON\'T LOOK EVEN SLIGHTLY BELIEVABLE.<br/>fecha_registro: 2023-06-02<br/>id: 1<br/>tipo: ARCHIVO<br/>titulo: CONVOCATORIA 1<br/>updated_at: 2023-06-03 14:58:32<br/>', 'CONVOCATORIAS', '2023-06-03', '14:58:32', '2023-06-03 18:58:32', '2023-06-03 18:58:32'),
+(88, 1, 'MODIFICACIÓN', 'EL USUARIO admin MODIFICÓ UNA ACTIVIDAD', 'archivo: 11685738828.jpg<br/>created_at: 2023-06-02 16:47:08<br/>descripcion: DESC<br/>fecha_registro: 2023-06-02<br/>id: 1<br/>tipo: IMAGEN<br/>titulo: ACTIVIDAD 1<br/>updated_at: 2023-06-02 16:47:08<br/>', 'archivo: 11685738828.jpg<br/>created_at: 2023-06-02 16:47:08<br/>descripcion: LATIN WORDS, CONSECTETUR, FROM A LOREM IPSUM PASSAGE, AND GOING THROUGH THE CITES OF THE WORD IN CLASSICAL LITERATURE, DISCOVERED THE UNDOUBTABLE SOURCE. LOREM IPSUM COMES FROM SECTIONS 1.10.32 AND 1.10.33 OF<br/>fecha_registro: 2023-06-02<br/>id: 1<br/>tipo: IMAGEN<br/>titulo: ACTIVIDAD 1<br/>updated_at: 2023-06-03 14:58:48<br/>', 'ACTIVIDADES', '2023-06-03', '14:58:48', '2023-06-03 18:58:48', '2023-06-03 18:58:48'),
+(89, 1, 'CREACIÓN', 'EL USUARIO admin REGISTRO UN USUARIO', 'acceso: 1<br/>ci: 1111<br/>ci_exp: SC<br/>correo: <br/>created_at: 2023-06-03 15:08:53<br/>dir: LOS OLIVOS<br/>fecha_registro: 2023-06-03<br/>fono: 77777<br/>foto: 1685819333_JPERES.jpg<br/>id: 4<br/>materno: MAMANI<br/>nombre: JUAN<br/>password: $2y$10$.et5EBuuq8qM3J59p9AD2.3MFtdxVXXfASgpSc6bE.1.vc5mWhfHa<br/>paterno: PERES<br/>tipo: SUPER USUARIO<br/>updated_at: 2023-06-03 15:08:53<br/>usuario: <br/>', NULL, 'USUARIOS', '2023-06-03', '15:08:53', '2023-06-03 19:08:53', '2023-06-03 19:08:53'),
+(90, 1, 'CREACIÓN', 'EL USUARIO admin REGISTRO UN USUARIO', 'acceso: 1<br/>ci: 1111<br/>ci_exp: CH<br/>correo: <br/>created_at: 2023-06-03 15:10:36<br/>dir: LOS OLIVOS<br/>fecha_registro: 2023-06-03<br/>fono: 77777<br/>foto: 1685819436_JPERES.jpg<br/>id: 2<br/>materno: MAMANI<br/>nombre: JUAN<br/>password: $2y$10$R8LkM3jPjEmZSze.AWP9hOwLOUahQeRaiG/mvN/Ipvo8Mq7k93Otu<br/>paterno: PERES<br/>tipo: SUPER USUARIO<br/>updated_at: 2023-06-03 15:10:36<br/>usuario: JPERES<br/>', NULL, 'USUARIOS', '2023-06-03', '15:10:36', '2023-06-03 19:10:36', '2023-06-03 19:10:36'),
+(91, 1, 'CREACIÓN', 'EL USUARIO admin REGISTRO UN USUARIO', 'acceso: 1<br/>ci: 2222<br/>ci_exp: LP<br/>correo: <br/>created_at: 2023-06-03 15:12:13<br/>dir: LOS OLIVOS<br/>fecha_registro: 2023-06-03<br/>fono: 777777<br/>foto: default.png<br/>id: 7<br/>materno: CONDORI<br/>nombre: ALBERTO<br/>password: $2y$10$Oa2DS.BbOZ/dy4gTtwcB7.HNkM9ubYOfPMW8L/jt5jRj1Wsf2y9v2<br/>paterno: GONZALES<br/>tipo: OPERADOR<br/>updated_at: 2023-06-03 15:12:13<br/>usuario: AGONZALES<br/>', NULL, 'USUARIOS', '2023-06-03', '15:12:13', '2023-06-03 19:12:13', '2023-06-03 19:12:13'),
+(92, 1, 'MODIFICACIÓN', 'EL USUARIO admin MODIFICÓ UN USUARIO', 'acceso: 1<br/>ci: 2222<br/>ci_exp: LP<br/>correo: <br/>created_at: 2023-06-03 15:12:13<br/>dir: LOS OLIVOS<br/>fecha_registro: 2023-06-03<br/>fono: 777777<br/>foto: default.png<br/>id: 7<br/>materno: CONDORI<br/>nombre: ALBERTO<br/>password: $2y$10$Oa2DS.BbOZ/dy4gTtwcB7.HNkM9ubYOfPMW8L/jt5jRj1Wsf2y9v2<br/>paterno: GONZALES<br/>tipo: OPERADOR<br/>updated_at: 2023-06-03 15:12:13<br/>usuario: AGONZALES<br/>', 'acceso: 1<br/>ci: 2222<br/>ci_exp: LP<br/>correo: <br/>created_at: 2023-06-03 15:12:13<br/>dir: LOS OLIVOS<br/>fecha_registro: 2023-06-03<br/>fono: 777777<br/>foto: default.png<br/>id: 7<br/>materno: CONDORI<br/>nombre: ALBERTO<br/>password: $2y$10$Oa2DS.BbOZ/dy4gTtwcB7.HNkM9ubYOfPMW8L/jt5jRj1Wsf2y9v2<br/>paterno: GONZALES<br/>tipo: OPERADOR<br/>updated_at: 2023-06-03 15:12:21<br/>usuario: <br/>', 'USUARIOS', '2023-06-03', '15:12:21', '2023-06-03 19:12:21', '2023-06-03 19:12:21'),
+(93, 1, 'MODIFICACIÓN', 'EL USUARIO admin MODIFICÓ UN USUARIO', 'acceso: 1<br/>ci: 1111<br/>ci_exp: CH<br/>correo: <br/>created_at: 2023-06-03 15:10:36<br/>dir: LOS OLIVOS<br/>fecha_registro: 2023-06-03<br/>fono: 77777<br/>foto: 1685819436_JPERES.jpg<br/>id: 2<br/>materno: MAMANI<br/>nombre: JUAN<br/>password: $2y$10$R8LkM3jPjEmZSze.AWP9hOwLOUahQeRaiG/mvN/Ipvo8Mq7k93Otu<br/>paterno: PERES<br/>tipo: SUPER USUARIO<br/>updated_at: 2023-06-03 15:10:36<br/>usuario: JPERES<br/>', 'acceso: 1<br/>ci: 1111<br/>ci_exp: CH<br/>correo: <br/>created_at: 2023-06-03 15:10:36<br/>dir: LOS OLIVOS<br/>fecha_registro: 2023-06-03<br/>fono: 77777<br/>foto: 1685819436_JPERES.jpg<br/>id: 2<br/>materno: MAMANI<br/>nombre: JUAN<br/>password: $2y$10$R8LkM3jPjEmZSze.AWP9hOwLOUahQeRaiG/mvN/Ipvo8Mq7k93Otu<br/>paterno: PERES<br/>tipo: SUPER USUARIO<br/>updated_at: 2023-06-03 15:10:36<br/>usuario: JPERES<br/>', 'USUARIOS', '2023-06-03', '15:12:51', '2023-06-03 19:12:51', '2023-06-03 19:12:51'),
+(94, 7, 'CREACIÓN', 'EL USUARIO AGONZALES REGISTRO UNA CONVOCATORIA', 'archivo: <br/>created_at: 2023-06-03 15:21:38<br/>descripcion: LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY. LOREM IPSUM HAS BEEN THE INDUSTRY\'S STANDARD DUMMY TEXT EVER SINCE THE 1500S, WHEN AN UNKNOWN PRINTER TOOK A GALLEY OF TYPE AND SCRAMBLED IT TO MAKE A TYPE SPECIMEN BOOK. IT HAS SURVIVED NOT ONLY FIVE CENTURIES, BUT ALSO THE LEAP INTO ELECTRONIC TYPESETTING, REMAINING ESSENTIALLY UNCHANGED. IT WAS POPULARISED IN THE 1960S WITH THE RELEASE OF LETRASET SHEETS CONTAINING LOREM IPSUM PASSAGES<br/>fecha_registro: 2023-06-03<br/>id: 3<br/>tipo: <br/>titulo: CONVOCATORIA #2<br/>updated_at: 2023-06-03 15:21:38<br/>', NULL, 'CONVOCATORIAS', '2023-06-03', '15:21:38', '2023-06-03 19:21:38', '2023-06-03 19:21:38'),
+(95, 7, 'CREACIÓN', 'EL USUARIO AGONZALES REGISTRO UNA ACTIVIDAD', 'archivo: 31685820117.jpg<br/>created_at: 2023-06-03 15:21:57<br/>descripcion: LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY. LOREM IPSUM HAS BEEN THE INDUSTRY\'S STANDARD DUMMY TEXT EVER SINCE THE 1500S, WHEN AN UNKNOWN PRINTER TOOK A GALLEY OF TYPE AND SCRAMBLED IT TO MAKE A TYPE SPECIMEN BOOK. IT HAS SURVIVED NOT ONLY FIVE CENTURIES, BUT ALSO THE LEAP INTO ELECTRONIC TYPESETTING, REMAINING ESSENTIALLY UNCHANGED. IT WAS POPULARISED IN THE 1960S WITH THE RELEASE OF LETRASET SHEETS CONTAINING LOREM IPSUM PASSAGES<br/>fecha_registro: 2023-06-03<br/>id: 3<br/>tipo: IMAGEN<br/>titulo: ACTIVIDAD #2<br/>updated_at: 2023-06-03 15:21:57<br/>', NULL, 'ACTIVIDADES', '2023-06-03', '15:21:57', '2023-06-03 19:21:57', '2023-06-03 19:21:57');
 
 -- --------------------------------------------------------
 
@@ -299,7 +314,8 @@ CREATE TABLE `portal_actividads` (
 --
 
 INSERT INTO `portal_actividads` (`id`, `titulo`, `descripcion`, `archivo`, `tipo`, `fecha_registro`, `created_at`, `updated_at`) VALUES
-(1, 'ACTIVIDAD 1', 'DESC', '11685738828.jpg', 'IMAGEN', '2023-06-02', '2023-06-02 20:47:08', '2023-06-02 20:47:08');
+(1, 'ACTIVIDAD 1', 'LATIN WORDS, CONSECTETUR, FROM A LOREM IPSUM PASSAGE, AND GOING THROUGH THE CITES OF THE WORD IN CLASSICAL LITERATURE, DISCOVERED THE UNDOUBTABLE SOURCE. LOREM IPSUM COMES FROM SECTIONS 1.10.32 AND 1.10.33 OF', '11685738828.jpg', 'IMAGEN', '2023-06-02', '2023-06-02 20:47:08', '2023-06-03 18:58:48'),
+(3, 'ACTIVIDAD #2', 'LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY. LOREM IPSUM HAS BEEN THE INDUSTRY\'S STANDARD DUMMY TEXT EVER SINCE THE 1500S, WHEN AN UNKNOWN PRINTER TOOK A GALLEY OF TYPE AND SCRAMBLED IT TO MAKE A TYPE SPECIMEN BOOK. IT HAS SURVIVED NOT ONLY FIVE CENTURIES, BUT ALSO THE LEAP INTO ELECTRONIC TYPESETTING, REMAINING ESSENTIALLY UNCHANGED. IT WAS POPULARISED IN THE 1960S WITH THE RELEASE OF LETRASET SHEETS CONTAINING LOREM IPSUM PASSAGES', '31685820117.jpg', 'IMAGEN', '2023-06-03', '2023-06-03 19:21:57', '2023-06-03 19:21:57');
 
 -- --------------------------------------------------------
 
@@ -323,7 +339,8 @@ CREATE TABLE `portal_convocatorias` (
 --
 
 INSERT INTO `portal_convocatorias` (`id`, `titulo`, `descripcion`, `archivo`, `tipo`, `fecha_registro`, `created_at`, `updated_at`) VALUES
-(1, 'CONVOCATORIA 1', 'DESC CONVOCATORIA', '11685738630.pdf', 'ARCHIVO', '2023-06-02', '2023-06-02 20:43:50', '2023-06-02 20:43:50');
+(1, 'CONVOCATORIA 1', 'THERE ARE MANY VARIATIONS OF PASSAGES OF LOREM IPSUM AVAILABLE, BUT THE MAJORITY HAVE SUFFERED ALTERATION IN SOME FORM, BY INJECTED HUMOUR, OR RANDOMISED WORDS WHICH DON\'T LOOK EVEN SLIGHTLY BELIEVABLE.', '11685738630.pdf', 'ARCHIVO', '2023-06-02', '2023-06-02 20:43:50', '2023-06-03 18:58:32'),
+(3, 'CONVOCATORIA #2', 'LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY. LOREM IPSUM HAS BEEN THE INDUSTRY\'S STANDARD DUMMY TEXT EVER SINCE THE 1500S, WHEN AN UNKNOWN PRINTER TOOK A GALLEY OF TYPE AND SCRAMBLED IT TO MAKE A TYPE SPECIMEN BOOK. IT HAS SURVIVED NOT ONLY FIVE CENTURIES, BUT ALSO THE LEAP INTO ELECTRONIC TYPESETTING, REMAINING ESSENTIALLY UNCHANGED. IT WAS POPULARISED IN THE 1960S WITH THE RELEASE OF LETRASET SHEETS CONTAINING LOREM IPSUM PASSAGES', NULL, '', '2023-06-03', '2023-06-03 19:21:38', '2023-06-03 19:21:38');
 
 -- --------------------------------------------------------
 
@@ -349,7 +366,7 @@ CREATE TABLE `portal_gamy` (
 --
 
 INSERT INTO `portal_gamy` (`id`, `mision`, `img_mision`, `vision`, `img_vision`, `historia`, `img_historia`, `fecha_registro`, `created_at`, `updated_at`) VALUES
-(2, 'CONTRARY TO POPULAR BELIEF, LOREM IPSUM IS NOT SIMPLY RANDOM TEXT. IT HAS ROOTS IN A PIECE OF CLASSICAL LATIN LITERATURE FROM 45 BC, MAKING IT OVER 2000 YEARS OLD. RICHARD MCCLINTOCK, A LATIN PROFESSOR AT HAMPDEN-SYDNEY COLLEGE IN VIRGINIA, LOOKED UP ONE OF THE MORE OBSCURE LATIN WORDS, CONSECTETUR, FROM A LOREM IPSUM PASSAGE, AND GOING THROUGH THE CITES OF THE WORD IN CLASSICAL LITERATURE', '21685725892.jpg', 'IT IS A LONG ESTABLISHED FACT THAT A READER WILL BE DISTRACTED BY THE READABLE CONTENT OF A PAGE WHEN LOOKING AT ITS LAYOUT. THE POINT OF USING LOREM IPSUM IS THAT IT HAS A MORE-OR-LESS NORMAL DISTRIBUTION OF LETTERS, AS OPPOSED TO USING \'CONTENT HERE, CONTENT HERE\', MAKING IT LOOK LIKE READABLE ENGLISH. MANY DESKTOP PUBLISHING PACKAGES AND WEB PAGE EDITORS NOW USE LOREM IPSUM AS THEIR DEFAULT MODEL TEXT, AND A SEARCH FOR \'LOREM IPSUM\' WILL UNCOVER MANY WEB SITES STILL IN THEIR INF', '21685725892.jpeg', 'THERE ARE MANY VARIATIONS OF PASSAGES OF LOREM IPSUM AVAILABLE, BUT THE MAJORITY HAVE SUFFERED ALTERATION IN SOME FORM, BY INJECTED HUMOUR, OR RANDOMISED WORDS WHICH DON\'T LOOK EVEN SLIGHTLY BELIEVABLE. IF YOU ARE GOING TO USE A PASSAGE OF LOREM IPSUM, YOU NEED TO BE SURE THERE ISN\'T ANYTHING EMBARRASSING HIDDEN IN THE MIDDLE OF TEXT. ALL THE LOREM IPSUM GENERATORS ON THE INTERNET TEND TO REPEAT PREDEFINED CHUNKS AS NECESSARY, MAKING THIS THE FIRST TRUE GENERATOR ON THE INTERNET', '', '2023-06-02', '2023-06-02 17:06:39', '2023-06-02 17:11:32');
+(2, 'CONTRARY TO POPULAR BELIEF, LOREM IPSUM IS NOT SIMPLY RANDOM TEXT. IT HAS ROOTS IN A PIECE OF CLASSICAL LATIN LITERATURE FROM 45 BC, MAKING IT OVER 2000 YEARS OLD. RICHARD MCCLINTOCK, A LATIN PROFESSOR AT HAMPDEN-SYDNEY COLLEGE IN VIRGINIA, LOOKED UP ONE OF THE MORE OBSCURE LATIN WORDS, CONSECTETUR, FROM A LOREM IPSUM PASSAGE, AND GOING THROUGH THE CITES OF THE WORD IN CLASSICAL LITERATURE', '21685725892.jpg', 'IT IS A LONG ESTABLISHED FACT THAT A READER WILL BE DISTRACTED BY THE READABLE CONTENT OF A PAGE WHEN LOOKING AT ITS LAYOUT. THE POINT OF USING LOREM IPSUM IS THAT IT HAS A MORE-OR-LESS NORMAL DISTRIBUTION OF LETTERS, AS OPPOSED TO USING \'CONTENT HERE, CONTENT HERE\', MAKING IT LOOK LIKE READABLE ENGLISH. MANY DESKTOP PUBLISHING PACKAGES AND WEB PAGE EDITORS NOW USE LOREM IPSUM AS THEIR DEFAULT MODEL TEXT, AND A SEARCH FOR \'LOREM IPSUM\' WILL UNCOVER MANY WEB SITES STILL IN THEIR INF', '21685725892.jpeg', 'THERE ARE MANY VARIATIONS OF PASSAGES OF LOREM IPSUM AVAILABLE, BUT THE MAJORITY HAVE SUFFERED ALTERATION IN SOME FORM, BY INJECTED HUMOUR, OR RANDOMISED WORDS WHICH DON\'T LOOK EVEN SLIGHTLY BELIEVABLE. IF YOU ARE GOING TO USE A PASSAGE OF LOREM IPSUM, YOU NEED TO BE SURE THERE ISN\'T ANYTHING EMBARRASSING HIDDEN IN THE MIDDLE OF TEXT. ALL THE LOREM IPSUM GENERATORS ON THE INTERNET TEND TO REPEAT PREDEFINED CHUNKS AS NECESSARY, MAKING THIS THE FIRST TRUE GENERATOR ON THE INTERNET', '21685818639.jpg', '2023-06-02', '2023-06-02 17:06:39', '2023-06-03 18:57:19');
 
 -- --------------------------------------------------------
 
@@ -373,8 +390,8 @@ CREATE TABLE `portal_noticias` (
 --
 
 INSERT INTO `portal_noticias` (`id`, `titulo`, `descripcion`, `archivo`, `tipo`, `fecha_registro`, `created_at`, `updated_at`) VALUES
-(1, 'NOTICIA 1', 'DESCRIPCION DE LA NOTICIA', '11685738181.docx', 'ARCHIVO', '2023-06-02', '2023-06-02 20:32:57', '2023-06-02 20:36:21'),
-(2, 'NOTICIA2', 'DESCRIPCION NOTICIA 2', '21685738254.jpg', 'IMAGEN', '2023-06-02', '2023-06-02 20:37:34', '2023-06-02 20:37:34');
+(1, 'NOTICIA 1', 'IT IS A LONG ESTABLISHED FACT THAT A READER WILL BE DISTRACTED BY THE READABLE CONTENT OF A PAGE WHEN LOOKING AT ITS LAYOUT. THE POINT OF USING LOREM IPSUM IS THAT IT HAS A MORE-OR-LESS NORMAL DISTRIBUTION OF LETTERS, AS OPPOSED TO USING', '11685738181.docx', 'ARCHIVO', '2023-06-02', '2023-06-02 20:32:57', '2023-06-03 18:58:02'),
+(2, 'NOTICIA2', 'THERE ARE MANY VARIATIONS OF PASSAGES OF LOREM IPSUM AVAILABLE, BUT THE MAJORITY HAVE SUFFERED ALTERATION IN SOME FORM, BY INJECTED HUMOUR, OR RANDOMISED WORDS WHICH DON\'T LOOK EVEN SLIGHTLY BELIEVABLE.', '21685738254.jpg', 'IMAGEN', '2023-06-02', '2023-06-02 20:37:34', '2023-06-03 18:58:21');
 
 -- --------------------------------------------------------
 
@@ -450,8 +467,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `usuario`, `nombre`, `paterno`, `materno`, `ci`, `ci_exp`, `dir`, `correo`, `fono`, `tipo`, `foto`, `password`, `acceso`, `fecha_registro`, `created_at`, `updated_at`) VALUES
 (1, 'admin', 'admin', 'admin', NULL, '', '', '', 'admin@gmail.com', '', 'SUPER USUARIO', NULL, '$2y$10$RrCZZySOwPej2gMFWsrjMe6dLzfaL5Q88h4J75I1FesEBRNPwq1x.', 1, '2023-01-11', NULL, NULL),
-(2, 'juan@gmail.com', 'JUAN', 'PERES', 'MAMANI', '1111', 'LP', 'LOS OLIVOS', 'juan@gmail.com', '7777777', 'OPERADOR', 'default.png', '$2y$10$VlZ5rT5ZoI2k7jATBNhGr.C35GUBxwY.3/TyQfPabzaBOLq3whilu', 1, '2023-06-02', '2023-06-02 21:07:37', '2023-06-02 21:07:37'),
-(3, 'jose@gmail.com', 'JOSE', 'GONZALES', 'MAMANI', '2222', 'LP', 'LOS OLIVOS', 'jose@gmail.com', '666666', 'SUPER USUARIO', 'default.png', '$2y$10$0oYix1YY4S40B333goO83.UeFqhm1YVQHWfc.OsX57qwhguWbPiDa', 1, '2023-06-02', '2023-06-02 21:08:06', '2023-06-02 21:08:06');
+(2, 'JPERES', 'JUAN', 'PERES', 'MAMANI', '1111', 'CH', 'LOS OLIVOS', '', '77777', 'SUPER USUARIO', '1685819436_JPERES.jpg', '$2y$10$R8LkM3jPjEmZSze.AWP9hOwLOUahQeRaiG/mvN/Ipvo8Mq7k93Otu', 1, '2023-06-03', '2023-06-03 19:10:36', '2023-06-03 19:10:36'),
+(7, 'AGONZALES', 'ALBERTO', 'GONZALES', 'CONDORI', '2222', 'LP', 'LOS OLIVOS', '', '777777', 'OPERADOR', 'default.png', '$2y$10$Oa2DS.BbOZ/dy4gTtwcB7.HNkM9ubYOfPMW8L/jt5jRj1Wsf2y9v2', 1, '2023-06-03', '2023-06-03 19:12:13', '2023-06-03 19:12:21');
 
 --
 -- Índices para tablas volcadas
@@ -537,8 +554,7 @@ ALTER TABLE `sliders`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_usuario_unique` (`usuario`),
-  ADD UNIQUE KEY `correo` (`correo`);
+  ADD UNIQUE KEY `users_usuario_unique` (`usuario`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -554,13 +570,13 @@ ALTER TABLE `configuracions`
 -- AUTO_INCREMENT de la tabla `destinatarios`
 --
 ALTER TABLE `destinatarios`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `historial_accions`
 --
 ALTER TABLE `historial_accions`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- AUTO_INCREMENT de la tabla `hoja_rutas`
@@ -584,13 +600,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT de la tabla `portal_actividads`
 --
 ALTER TABLE `portal_actividads`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `portal_convocatorias`
 --
 ALTER TABLE `portal_convocatorias`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `portal_gamy`
@@ -620,7 +636,7 @@ ALTER TABLE `sliders`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas

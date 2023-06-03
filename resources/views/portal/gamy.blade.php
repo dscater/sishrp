@@ -1,9 +1,6 @@
 @extends('layouts.principal')
 @section('css')
     <style>
-        .container-fluid {
-            height: 75vh;
-        }
     </style>
 @endsection
 @section('content')

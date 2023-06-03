@@ -16,6 +16,8 @@
                                     Facebook</a>
                                 <a href="" class="btn btn-success"><i class="fab fa-whatsapp-square"></i>
                                     Whatsapp</a>
+                                <a href="" class="btn bg-red text-white"><i class="fab fa-instagram-square"></i>
+                                    Instagram</a>
                                 <a href="" class="btn btn-info"><i class="fab fa-twitter-square"></i>
                                     Twitter</a>
                             </div>

@@ -101,38 +101,187 @@
                                                     <b-card>
                                                         <ul>
                                                             <li>
-                                                                Informe:  <span><i :class="[row.item.ultimo_destinatario.informe==1?'fa fa-check-square':'far fa-square']"></i></span>
+                                                                Informe:
+                                                                <span
+                                                                    ><i
+                                                                        :class="[
+                                                                            row
+                                                                                .item
+                                                                                .ultimo_destinatario
+                                                                                .informe ==
+                                                                            1
+                                                                                ? 'fa fa-check-square'
+                                                                                : 'far fa-square',
+                                                                        ]"
+                                                                    ></i
+                                                                ></span>
                                                             </li>
                                                             <li>
-                                                                Asista:  <span><i :class="[row.item.ultimo_destinatario.asista==1?'fa fa-check-square':'far fa-square']"></i></span>
+                                                                Asista:
+                                                                <span
+                                                                    ><i
+                                                                        :class="[
+                                                                            row
+                                                                                .item
+                                                                                .ultimo_destinatario
+                                                                                .asista ==
+                                                                            1
+                                                                                ? 'fa fa-check-square'
+                                                                                : 'far fa-square',
+                                                                        ]"
+                                                                    ></i
+                                                                ></span>
                                                             </li>
                                                             <li>
-                                                                Responda:  <span><i :class="[row.item.ultimo_destinatario.responda==1?'fa fa-check-square':'far fa-square']"></i></span>
+                                                                Responda:
+                                                                <span
+                                                                    ><i
+                                                                        :class="[
+                                                                            row
+                                                                                .item
+                                                                                .ultimo_destinatario
+                                                                                .responda ==
+                                                                            1
+                                                                                ? 'fa fa-check-square'
+                                                                                : 'far fa-square',
+                                                                        ]"
+                                                                    ></i
+                                                                ></span>
                                                             </li>
                                                             <li>
-                                                                Ejecute:  <span><i :class="[row.item.ultimo_destinatario.ejecute==1?'fa fa-check-square':'far fa-square']"></i></span>
+                                                                Ejecute:
+                                                                <span
+                                                                    ><i
+                                                                        :class="[
+                                                                            row
+                                                                                .item
+                                                                                .ultimo_destinatario
+                                                                                .ejecute ==
+                                                                            1
+                                                                                ? 'fa fa-check-square'
+                                                                                : 'far fa-square',
+                                                                        ]"
+                                                                    ></i
+                                                                ></span>
                                                             </li>
                                                             <li>
-                                                                Difunda:  <span><i :class="[row.item.ultimo_destinatario.difunda==1?'fa fa-check-square':'far fa-square']"></i></span>
+                                                                Difunda:
+                                                                <span
+                                                                    ><i
+                                                                        :class="[
+                                                                            row
+                                                                                .item
+                                                                                .ultimo_destinatario
+                                                                                .difunda ==
+                                                                            1
+                                                                                ? 'fa fa-check-square'
+                                                                                : 'far fa-square',
+                                                                        ]"
+                                                                    ></i
+                                                                ></span>
                                                             </li>
                                                             <li>
-                                                                Coordine:  <span><i :class="[row.item.ultimo_destinatario.coordine==1?'fa fa-check-square':'far fa-square']"></i></span>
+                                                                Coordine:
+                                                                <span
+                                                                    ><i
+                                                                        :class="[
+                                                                            row
+                                                                                .item
+                                                                                .ultimo_destinatario
+                                                                                .coordine ==
+                                                                            1
+                                                                                ? 'fa fa-check-square'
+                                                                                : 'far fa-square',
+                                                                        ]"
+                                                                    ></i
+                                                                ></span>
                                                             </li>
                                                             <li>
-                                                                Ver antecedente:  <span><i :class="[row.item.ultimo_destinatario.ver_antecedente==1?'fa fa-check-square':'far fa-square']"></i></span>
+                                                                Ver antecedente:
+                                                                <span
+                                                                    ><i
+                                                                        :class="[
+                                                                            row
+                                                                                .item
+                                                                                .ultimo_destinatario
+                                                                                .ver_antecedente ==
+                                                                            1
+                                                                                ? 'fa fa-check-square'
+                                                                                : 'far fa-square',
+                                                                        ]"
+                                                                    ></i
+                                                                ></span>
                                                             </li>
                                                             <li>
-                                                                Acelere trámite:  <span><i :class="[row.item.ultimo_destinatario.acelere_tramite==1?'fa fa-check-square':'far fa-square']"></i></span>
+                                                                Acelere trámite:
+                                                                <span
+                                                                    ><i
+                                                                        :class="[
+                                                                            row
+                                                                                .item
+                                                                                .ultimo_destinatario
+                                                                                .acelere_tramite ==
+                                                                            1
+                                                                                ? 'fa fa-check-square'
+                                                                                : 'far fa-square',
+                                                                        ]"
+                                                                    ></i
+                                                                ></span>
                                                             </li>
                                                             <li>
-                                                                Para conocimiento:  <span><i :class="[row.item.ultimo_destinatario.para_conocimiento==1?'fa fa-check-square':'far fa-square']"></i></span>
+                                                                Para
+                                                                conocimiento:
+                                                                <span
+                                                                    ><i
+                                                                        :class="[
+                                                                            row
+                                                                                .item
+                                                                                .ultimo_destinatario
+                                                                                .para_conocimiento ==
+                                                                            1
+                                                                                ? 'fa fa-check-square'
+                                                                                : 'far fa-square',
+                                                                        ]"
+                                                                    ></i
+                                                                ></span>
                                                             </li>
                                                             <li>
-                                                                Archivo:  <span><i :class="[row.item.ultimo_destinatario.archivo==1?'fa fa-check-square':'far fa-square']"></i></span>
+                                                                Archivo:
+                                                                <span
+                                                                    ><i
+                                                                        :class="[
+                                                                            row
+                                                                                .item
+                                                                                .ultimo_destinatario
+                                                                                .archivo ==
+                                                                            1
+                                                                                ? 'fa fa-check-square'
+                                                                                : 'far fa-square',
+                                                                        ]"
+                                                                    ></i
+                                                                ></span>
                                                             </li>
                                                         </ul>
-                                                        <strong>Descripción:</strong> <span v-text="row.item.ultimo_destinatario.descripcion"></span><br/>
-                                                        <strong>Fecha:</strong> <span v-text="row.item.ultimo_destinatario.fecha"></span><br/>
+                                                        <strong
+                                                            >Descripción:</strong
+                                                        >
+                                                        <span
+                                                            v-text="
+                                                                row.item
+                                                                    .ultimo_destinatario
+                                                                    .descripcion
+                                                            "
+                                                        ></span
+                                                        ><br />
+                                                        <strong>Fecha:</strong>
+                                                        <span
+                                                            v-text="
+                                                                row.item
+                                                                    .ultimo_destinatario
+                                                                    .fecha
+                                                            "
+                                                        ></span
+                                                        ><br />
                                                     </b-card>
                                                 </template>
 
@@ -151,6 +300,20 @@
                                                     <div
                                                         class="row justify-content-between"
                                                     >
+                                                        <b-button
+                                                            size="sm"
+                                                            pill
+                                                            variant="outline-success"
+                                                            class="btn-flat btn-block"
+                                                            title="Pdf"
+                                                            @click="
+                                                                pdf(row.item)
+                                                            "
+                                                        >
+                                                            <i
+                                                                class="fa fa-file-pdf"
+                                                            ></i>
+                                                        </b-button>
                                                         <b-button
                                                             size="sm"
                                                             pill
@@ -395,6 +558,53 @@ export default {
                         });
                 }
             });
+        },
+        pdf(item) {
+            let config = {
+                responseType: "blob",
+            };
+            let oReporte = {
+                filtro: "nro",
+                nro: item.id,
+                fecha_ini: "",
+                fecha_fin: "",
+            };
+            axios
+                .post("/admin/reportes/hoja_rutas", oReporte, config)
+                .then((res) => {
+                    this.errors = [];
+                    this.enviando = false;
+                    let pdfBlob = new Blob([res.data], {
+                        type: "application/pdf",
+                    });
+                    let urlReporte = URL.createObjectURL(pdfBlob);
+                    window.open(urlReporte);
+                })
+                .catch(async (error) => {
+                    let responseObj = await error.response.data.text();
+                    responseObj = JSON.parse(responseObj);
+                    console.log(error);
+                    this.enviando = false;
+                    if (error.response) {
+                        if (error.response.status === 422) {
+                            this.errors = responseObj.errors;
+                        }
+                        if (
+                            error.response.status === 420 ||
+                            error.response.status === 419 ||
+                            error.response.status === 401
+                        ) {
+                            Swal.fire({
+                                icon: "error",
+                                title: "Error",
+                                html: responseObj.message,
+                                showConfirmButton: false,
+                                timer: 2000,
+                            });
+                            window.location = "/";
+                        }
+                    }
+                });
         },
         onFiltered(filteredItems) {
             // Trigger pagination to update the number of buttons/pages due to filtering

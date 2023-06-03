@@ -98,7 +98,7 @@
         } */
 
         .bg_gradient {
-            background: linear-gradient(135deg, #003366, #006633);
+            background: linear-gradient(90deg, var(--principal), var(--secundario));
         }
 
         /* loader */
@@ -178,9 +178,15 @@
                         <a class="nav-link" target="_blank"
                             href="{{ $o_portal_turismo_deportes->first() ? $o_portal_turismo_deportes->first()->link_deportes : 'https://www.google.com/' }}">Deportes</a>
                     </li>
+                    @if(Auth::check())
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/administracion/inicio') }}">Administración</a>
+                    </li>
+                    @else
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">Iniciar sesión</a>
                     </li>
+                    @endif
                 </ul>
             </div>
         </nav>

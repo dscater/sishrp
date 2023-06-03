@@ -239,7 +239,7 @@
         </div>
         <div class="bordeado info">
             <p class="p1 texto_info"><strong>Procedencia: </strong>{{ $hr->procedencia }}</p>
-            <p class="p1 texto_info"><strong>Referencia: </strong>{{ $hr->procedencia }}</p>
+            <p class="p1 texto_info"><strong>Referencia: </strong>{{ $hr->referencia }}</p>
         </div>
         <table class="table_info" style="margin-top: 8px;">
             <thead>
@@ -283,45 +283,45 @@
                 <tbody>
                     <tr>
                         <td width="16%">Informe</td>
-                        <td width="10%">{{ $des->informe }}</td>
-                        <td width="44%" rowspan="10">{{ $des->descripcion }}</td>
+                        <td class="centreado" width="10%">{!! $des->informe == 1 ? '<img src="' . asset('imgs/check.png') . '" width="20px">' : '' !!}</td>
+                        <td class="centreado" width="44%" rowspan="10">{{ $des->descripcion }}</td>
                         <td rowspan="9"></td>
                     </tr>
                     <tr>
                         <td>Asista</td>
-                        <td>{{ $des->asista }}</td>
+                        <td class="centreado">{!! $des->asista == 1 ? '<img src="' . asset('imgs/check.png') . '" width="20px">' : '' !!}</td>
                     </tr>
                     <tr>
                         <td>Responda</td>
-                        <td>{{ $des->responda }}</td>
+                        <td class="centreado">{!! $des->responda == 1 ? '<img src="' . asset('imgs/check.png') . '" width="20px">' : '' !!}</td>
                     </tr>
                     <tr>
                         <td>Ejecute</td>
-                        <td>{{ $des->ejecute }}</td>
+                        <td class="centreado">{!! $des->ejecute == 1 ? '<img src="' . asset('imgs/check.png') . '" width="20px">' : '' !!}</td>
                     </tr>
                     <tr>
                         <td>Difunda</td>
-                        <td>{{ $des->difunda }}</td>
+                        <td class="centreado">{!! $des->difunda == 1 ? '<img src="' . asset('imgs/check.png') . '" width="20px">' : '' !!}</td>
                     </tr>
                     <tr>
                         <td>Coordine</td>
-                        <td>{{ $des->coordine }}</td>
+                        <td class="centreado">{!! $des->coordine == 1 ? '<img src="' . asset('imgs/check.png') . '" width="20px">' : '' !!}</td>
                     </tr>
                     <tr>
                         <td>Ver antecedente</td>
-                        <td>{{ $des->ver_antecedente }}</td>
+                        <td class="centreado">{!! $des->ver_antecedente == 1 ? '<img src="' . asset('imgs/check.png') . '" width="20px">' : '' !!}</td>
                     </tr>
                     <tr>
                         <td>Acelere tramite</td>
-                        <td>{{ $des->acelere_tramite }}</td>
+                        <td class="centreado">{!! $des->acelere_tramite == 1 ? '<img src="' . asset('imgs/check.png') . '" width="20px">' : '' !!}</td>
                     </tr>
                     <tr>
                         <td>Para conocimiento</td>
-                        <td>{{ $des->para_conocimiento }}</td>
+                        <td class="centreado">{!! $des->para_conocimiento == 1 ? '<img src="' . asset('imgs/check.png') . '" width="20px">' : '' !!}</td>
                     </tr>
                     <tr>
                         <td>Archivo</td>
-                        <td>{{ $des->archivo }}</td>
+                        <td class="centreado">{!! $des->archivo == 1 ? '<img src="' . asset('imgs/check.png') . '" width="20px">' : '' !!}</td>
                         <td><strong>Fecha: </strong>{{ date('d/m/Y', strtotime($des->fecha)) }}</td>
                     </tr>
                 </tbody>

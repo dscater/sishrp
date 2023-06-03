@@ -158,7 +158,7 @@
                                     :class="{
                                         'text-danger': errors.correo,
                                     }"
-                                    >Correo*</label
+                                    >Correo</label
                                 >
                                 <el-input
                                     placeholder="Correo"
