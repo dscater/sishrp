@@ -21,6 +21,11 @@ Route::get('/', [InicioController::class, 'index'])->name("inicio");
 
 // PORTAL
 Route::get("/gamy", [PortalController::class, 'gamy'])->name("gamy");
+Route::get("/noticias", [PortalController::class, 'noticias'])->name("noticias");
+
+Route::get("/noticias/lista", [PortalNoticiaController::class, 'lista']);
+Route::get("/convocatorias/lista", [PortalConvocatoriaController::class, 'lista']);
+Route::get("/actividads/lista", [PortalActividadController::class, 'lista']);
 
 // LOGIN
 Route::get('/login', [LoginController::class, 'index'])->name("login");

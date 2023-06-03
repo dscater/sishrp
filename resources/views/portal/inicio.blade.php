@@ -109,49 +109,52 @@
                     <div class="card-body">
                         <div class="col-md-12">
                             <div class="row">
-                                <a href=""class="col-md-12 form-group contenedor_opcion">
+                                <a href="{{ route('gamy') }}" class="col-md-12 form-group contenedor_opcion">
                                     <div class="btn_info_secundario"
                                         style="background:url('{{ asset('imgs/gamy.jpeg') }}');background-size:cover; background-position:center;">
                                         <h5 class="d-block text-center titulo_opciones">GAMY <i
                                                 class="fa fa-arrow-right"></i></h5>
                                     </div>
                                 </a>
-                                <a href="" class="col-md-4 form-group contenedor_opcion">
+                                <a href="{{ route('noticias') }}" class="col-md-4 form-group contenedor_opcion">
                                     <div class="btn_info_secundario"
                                         style="background:url('{{ asset('imgs/fondo_noticias.jpg') }}');background-size:cover; background-position:center;">
                                         <h5 class="d-block text-center titulo_opciones">NOTICIAS <i
                                                 class="fa fa-arrow-right"></i></h5>
                                     </div>
                                 </a>
-                                <a href="" class="col-md-4 form-group contenedor_opcion">
+                                @inject('o_portal_turismo_deportes', 'App\Models\PortalTurismoDeporte')
+                                <a href="{{ $o_portal_turismo_deportes->first() ? $o_portal_turismo_deportes->first()->link_turismo : 'https://www.google.com/' }}"
+                                    target="_blank" class="col-md-4 form-group contenedor_opcion">
                                     <div class="btn_info_secundario"
                                         style="background:url('{{ asset('imgs/fondo_turismo.jpg') }}');background-size:cover; background-position:center;">
                                         <h5 class="d-block text-center titulo_opciones">TURISMO <i
                                                 class="fa fa-arrow-right"></i></h5>
                                     </div>
                                 </a>
-                                <a href="" class="col-md-4 form-group contenedor_opcion">
+                                <a href="{{ $o_portal_turismo_deportes->first() ? $o_portal_turismo_deportes->first()->link_deportes : 'https://www.google.com/' }}"
+                                    target="_blank" class="col-md-4 form-group contenedor_opcion">
                                     <div class="btn_info_secundario"
                                         style="background:url('{{ asset('imgs/fondo_deportes.jpg') }}');background-size:cover; background-position:center;">
                                         <h5 class="d-block text-center titulo_opciones">DEPORTES <i
                                                 class="fa fa-arrow-right"></i></h5>
                                     </div>
                                 </a>
-                                <a href="" class="col-md-4 form-group contenedor_opcion">
+                                <a href="{{ route('noticias') }}" class="col-md-4 form-group contenedor_opcion">
                                     <div class="btn_info_secundario"
                                         style="background:url('{{ asset('imgs/iglesia.jpg') }}');background-size:cover; background-position:center;">
                                         <h5 class="d-block text-center titulo_opciones">COMUNICADOS <i
                                                 class="fa fa-arrow-right"></i></h5>
                                     </div>
                                 </a>
-                                <a href="" class="col-md-4 form-group contenedor_opcion">
+                                <a href="{{ route('noticias') }}" class="col-md-4 form-group contenedor_opcion">
                                     <div class="btn_info_secundario"
                                         style="background:url('{{ asset('imgs/convocatoria.jpg') }}');background-size:cover; background-position:center;">
                                         <h5 class="d-block text-center titulo_opciones">CONVOCATORIAS <i
                                                 class="fa fa-arrow-right"></i></h5>
                                     </div>
                                 </a>
-                                <a href="" class="col-md-4 form-group contenedor_opcion"
+                                <a href="{{ route('noticias') }}" class="col-md-4 form-group contenedor_opcion"
                                     style="background:url('{{ asset('imgs/actividad.jpg') }}');background-size:cover; background-position:center;">
                                     <div class="btn_info_secundario">
                                         <h5 class="d-block text-center titulo_opciones">ACTIVIDADES <i

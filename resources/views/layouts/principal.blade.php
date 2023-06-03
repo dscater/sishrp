@@ -29,7 +29,7 @@
         }
 
         .componente_inicial {
-            margin-top: 79.8px!important;
+            margin-top: 79.8px !important;
         }
 
         #myCarousel {
@@ -71,6 +71,7 @@
 
         body {
             position: relative;
+            height: 100%;
         }
 
         @keyframes bounceIn {
@@ -141,7 +142,7 @@
     @yield('css')
 </head>
 
-<body class="sidebar-mini layout-fixed control-sidebar-slide-open layout-navbar-fixed text-sm">
+<body class="text-sm">
     <div class="loader">
         <div class="spinner"></div>
     </div>
@@ -153,23 +154,29 @@
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            @inject('o_portal_turismo_deportes', 'App\Models\PortalTurismoDeporte')
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto bg-success text-md">
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{route('inicio')}}">Inicio</a>
+                        <a class="nav-link {{ request()->is('/') ? 'active' : '' }}"
+                            href="{{ route('inicio') }}">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('gamy') }}">Gamy</a>
+                        <a class="nav-link {{ request()->is('gamy') ? 'active' : '' }}"
+                            href="{{ route('gamy') }}">Gamy</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Noticias</a>
+                        <a class="nav-link {{ request()->is('noticias') ? 'active' : '' }}"
+                            href="{{ route('noticias') }}">Noticias</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Turismo</a>
+                        <a class="nav-link" target="_blank"
+                            href="{{ $o_portal_turismo_deportes->first() ? $o_portal_turismo_deportes->first()->link_turismo : 'https://www.google.com/' }}">Turismo</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Deportes</a>
+                        <a class="nav-link" target="_blank"
+                            href="{{ $o_portal_turismo_deportes->first() ? $o_portal_turismo_deportes->first()->link_deportes : 'https://www.google.com/' }}">Deportes</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}">Iniciar sesión</a>
@@ -178,8 +185,8 @@
             </div>
         </nav>
         @yield('content')
+        @include('portal.contactos')
     </div>
-    @include('portal.contactos')
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/plantilla.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>

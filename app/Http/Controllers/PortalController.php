@@ -12,4 +12,10 @@ class PortalController extends Controller
         $portal_gamy = PortalGamy::first();
         return view("portal.gamy", compact("portal_gamy"));
     }
+
+    public function noticias()
+    {
+        $portal_noticias = PortalGamy::first();
+        return view("portal.noticias", compact("portal_noticias"));
+    }
 }

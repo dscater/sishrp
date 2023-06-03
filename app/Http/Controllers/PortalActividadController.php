@@ -22,6 +22,12 @@ class PortalActividadController extends Controller
         return response()->JSON(['portal_actividads' => $portal_actividads, 'total' => count($portal_actividads)], 200);
     }
 
+    public function lista(Request $request)
+    {
+        $portal_actividads = PortalActividad::paginate(1);
+        return response()->JSON(['portal_actividads' => $portal_actividads, 'total' => count($portal_actividads)], 200);
+    }
+
     public function getPortalActividads()
     {
         $portal_actividads = PortalActividad::all();

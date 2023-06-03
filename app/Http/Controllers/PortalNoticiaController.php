@@ -22,6 +22,12 @@ class PortalNoticiaController extends Controller
         return response()->JSON(['portal_noticias' => $portal_noticias, 'total' => count($portal_noticias)], 200);
     }
 
+    public function lista(Request $request)
+    {
+        $portal_noticias = PortalNoticia::paginate(1);
+        return response()->JSON(['portal_noticias' => $portal_noticias, 'total' => count($portal_noticias)], 200);
+    }
+
     public function getPortalNoticias()
     {
         $portal_noticias = PortalNoticia::all();

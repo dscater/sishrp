@@ -22,6 +22,12 @@ class PortalConvocatoriaController extends Controller
         return response()->JSON(['portal_convocatorias' => $portal_convocatorias, 'total' => count($portal_convocatorias)], 200);
     }
 
+    public function lista(Request $request)
+    {
+        $portal_convocatorias = PortalConvocatoria::paginate(1);
+        return response()->JSON(['portal_convocatorias' => $portal_convocatorias, 'total' => count($portal_convocatorias)], 200);
+    }
+
     public function getPortalConvocatorias()
     {
         $portal_convocatorias = PortalConvocatoria::all();

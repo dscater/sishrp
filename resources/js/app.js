@@ -45,6 +45,9 @@ window.EventBus = EventBus;
 // COMPONENTES
 Vue.component('App', require('./App.vue').default);
 Vue.component('Auth', require('./Auth.vue').default);
+Vue.component('Noticias', require('./portal/Noticias.vue').default);
+Vue.component('Convocatorias', require('./portal/Convocatorias.vue').default);
+Vue.component('Actividades', require('./portal/Actividades.vue').default);
 
 import router from './routes';
 import Vue from 'vue';
